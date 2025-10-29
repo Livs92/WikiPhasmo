@@ -19,7 +19,7 @@ themeToggle?.addEventListener("change", (e) => {
   localStorage.setItem("theme", e.target.checked ? "light" : "dark");
 });
 
-$("#year").text(new Date().getFullYear());
+document.querySelector("#year").textContent = new Date().getFullYear();
 
 // Carrossel Home
 (function () {
