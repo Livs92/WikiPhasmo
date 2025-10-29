@@ -1,0 +1,8 @@
+{
+  "name": "phasmowiki",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server -p $PORT -c-1 ."
+  }
+}
