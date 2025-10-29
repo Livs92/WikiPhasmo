@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WikiPhasmo — Fantasmas & Evidências</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html"
+          ><span class="logo">👻</span> WikiPhasmo</a
+        >
+        <button class="hamburger" id="menuBtn" aria-label="Menu">☰</button>
+        <nav id="menu" class="menu">
+          <a href="ghosts.html" class="tab-btn active">Fantasmas</a>
+          <a href="maps.html">Mapas</a>
+          <a href="items.html">Itens</a>
+          <a href="cursed.html">Amaldiçoados</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Fantasmas & Evidências</h1>
+
+      <div class="panel">
+        <h3 style="margin: 0">Evidências</h3>
+        <div id="evidenceChips" class="chips"></div>
+      </div>
+
+      <div class="section-head">
+        <div class="row">
+          <input
+            id="searchGhosts"
+            class="input"
+            placeholder="Buscar fantasma..."
+          />
+        </div>
+      </div>
+
+      <!-- grade de cards -->
+      <div id="ghostGrid" class="grid auto"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container foot">
+        <small>
+          Desenvolvido por Lívia Silveira da Rosa ©
+          <span id="year"></span> WikiPhasmo
+        </small>
+      </div>
+    </footer>
+
+    <!-- Modal de vídeo YouTube -->
+    <div id="videoModal" class="pw-modal" aria-hidden="true">
+      <div
+        class="pw-backdrop"
+        role="button"
+        tabindex="0"
+        aria-label="Fechar vídeo"
+      ></div>
+      <div
+        class="pw-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Player de vídeo"
+      >
+        <button id="pwClose" class="pw-close" aria-label="Fechar">✕</button>
+
+        <div class="video-wrap" style="position: relative; padding-top: 56.25%">
+          <iframe
+            id="ytFrame"
+            src=""
+            title="YouTube player"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+            style="
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              border: 0;
+            "
+          ></iframe>
+        </div>
+        
+        <div id="videoDesc" class="video-desc">
+          <!-- ===================== BANSHEE ===================== -->
+          <div class="desc" data-ghost="banshee">
+<p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Orbe Fantasma</li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. No entanto, a Banshee escolhe um alvo específico e sua caçada é baseada apenas na sanidade dessa vítima, não da equipe inteira. Possui velocidade normal.</p>
+
+
+<h4>Características:</h4>
+<ul>
+  <li>A Banshee ignora completamente outros investigadores e persegue apenas seu alvo escolhido.</li>
+  <li>Durante a caçada, concentra todos os esforços em eliminar a vítima principal.</li>
+  <li>Se o alvo sair da casa, a Banshee pode vagar sem direção até que ele retorne.</li>
+  <li>É uma das entidades mais imprevisíveis e letais em investigações prolongadas.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra o famoso grito da Banshee captado pelo microfone parabólico, sendo um dos sons mais característicos deste fantasma.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@slkilljoy" target="_blank"
+                >Killjoy Katherine</a
+              >
+            </p>
+          </div>
+
+          <!-- ===================== DEOGEN ===================== -->
+          <div class="desc" data-ghost="deogen" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>Escrita Fantasma</li>
+  <li>Projetor D.O.T.S.</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 40%. O Deogen é um fantasma imprevisível que nunca perde o rastro de suas vítimas. Sua velocidade varia conforme o comportamento do jogador.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Sua evidência principal é a Spirit Box, na qual é possível ouvir seu ofegar característico.</li>
+  <li>Detecta todos os jogadores, tornando impossível se esconder.</li>
+  <li>Quando o investigador o encara, o Deogen se torna mais lento, mas acelera consideravelmente quando o jogador está de costas.</li>
+  <li>A melhor forma de sobreviver é manter contato visual e usar o espaço ao redor para ganhar tempo durante a caçada.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a velocidade única do Deogen: começa muito
+                rápido e desacelera até ficar extremamente lento quando se
+                aproxima do jogador.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@melodicbeam" target="_blank"
+                >MelodicBeam</a
+              >
+            </p>
+          </div>
+
+          <!-- ===================== SPIRIT ===================== -->
+         
+         <div class="desc" data-ghost="spirit" hidden>
+ <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Spirit Box</li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Spirit é uma entidade comum, porém perigosa quando ignorada. Sua principal fraqueza é o incenso, que pode impedi-lo de caçar por um período mais longo do que o normal.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Após o uso correto do incenso, o Spirit leva mais de 180 segundos para tentar uma nova caçada.</li>
+  <li>Se a entidade atacar entre 90 e 180 segundos após o uso do incenso, não é um Spirit.</li>
+  <li>Uma boa estratégia é reduzir a sanidade para abaixo de 50%, remover crucifixos e usar o incenso para medir o tempo de reação.</li>
+  <li>Apresenta comportamento padrão durante caçadas, sem habilidades especiais.</li>
+</ul>
+<br>
+
+  <p>
+    <em>
+      Este vídeo mostra o intervalo maior entre as caçadas, que é característico do Spirit.
+    </em>
+  </p>
+
+  <p>
+    <strong>Fonte:</strong>
+    <a href="https://www.youtube.com/@JustlySR" target="_blank">@JustlySR</a>
+  </p>
+
+        
+          </div>
+          <!-- ===================== WRAITH ===================== -->
+          <div class="desc" data-ghost="wraith" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Spirit Box</li>
+  <li>Projetor DOTS</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Wraith é uma entidade extremamente perigosa, conhecida por se mover através de paredes e flutuar, o que o torna imprevisível durante as investigações.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>É o único fantasma que não deixa pegadas ao interagir com o sal, mesmo que o som do passo seja ouvido.</li>
+  <li>Pode se teletransportar para perto de um jogador, mesmo estando distante de sua sala principal.</li>
+  <li>Costuma causar eventos fantasmais em locais afastados, confundindo os investigadores sobre sua verdadeira localização.</li>
+  <li>Apesar de flutuar, ainda pode ativar sensores de movimento e responder na Spirit Box normalmente.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra o comportamento de perseguição/teleporte do
+                Wraith e como identificar usando Sal.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@KingCarlPT" target="_blank"
+                >KingCarlPT</a
+              >
+            </p>
+          </div>
+          <!-- ===================== PHANTOM ===================== -->
+          <div class="desc" data-ghost="phantom" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li> UV (Impressões Digitais)</li>
+  <li>Projetor DOTS</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Phantom é uma entidade ilusória que persegue silenciosamente os investigadores, confundindo-os com aparições repentinas e comportamento errático. O fantasma possui velocidade normal.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Ao ser visto durante um evento paranormal, reduz a sanidade dos jogadores próximos em cerca de 20%.</li>
+  <li>Pode desaparecer em uma fotografia. Se sumir logo após o clique, é um forte indício de Phantom.</li>
+  <li>Permanece visível por menos tempo durante caçadas, o que torna difícil rastreá-lo visualmente.</li>
+  <li>Costuma “seguir” os jogadores fora da sala de origem, deixando leituras de EMF 2 no trajeto percorrido.</li>
+  <li>Não causa drenagem contínua de sanidade; o efeito ocorre apenas ao ser observado em eventos.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra o Phantom através da caçada, demonstrando ser
+                o menos visível em comparação com todos os outros fantasmas
+              </em>
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@melodicbeam" target="_blank"
+                >MelodicBeam</a
+              >
+            </p>
+          </div>
+          <!-- ===================== POLTERGEIST ===================== -->
+          <div class="desc" data-ghost="poltergeist" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>UV (Impressões Digitais) </li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Poltergeist é uma entidade barulhenta e imprevisível, conhecida por manipular e arremessar vários objetos de uma só vez para espalhar o caos.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Pode arremessar múltiplos objetos ao mesmo tempo, sendo o único fantasma capaz de causar esse tipo de evento.</li>
+  <li>Durante suas interações, costuma lançar objetos com mais força e frequência que outros fantasmas.</li>
+  <li>Quando há poucos itens no ambiente, sua atividade tende a diminuir.</li>
+  <li>Essas interações costumam causar perda de sanidade significativa se os jogadores estiverem próximos.</li>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a agressividade do Poltergeist ao jogar
+                objetos e como diferenciá-lo de outros fantasmas ativos.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="http://youtube.com/@yesterdaysgambler" target="_blank"
+                >Yesterday's Gambler</a
+              >
+            </p>
+          </div>
+          <!-- ===================== JINN ===================== -->
+          <div class="desc" data-ghost="jinn" hidden>
+        <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>UV (Impressões Digitais)</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Jinn é uma entidade territorial que se torna mais rápida e perigosa quando a energia da casa está ligada.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>É o único fantasma que <strong>não pode desligar o disjuntor</strong>.</li>
+  <li>Com a energia ligada, pode reduzir até <strong>25%</strong> da sanidade de todos os jogadores próximos de uma só vez.</li>
+  <li>Se houver leitura de EMF 2 no disjuntor e ele continuar ligado, há grande chance de ser um Jinn (especialmente se o disjuntor não estiver no cômodo do fantasma).</li>
+  <li>Pode gerar leituras de EMF 2 ou 5 próximas ao disjuntor sem causar interações visíveis. Isso só ocorre se o disjuntor estiver ligado.</li>
+  <li><strong>Velocidade com energia desligada:</strong> corre em velocidade normal, com leve aumento quando ganha Linha de Visão do jogador.</li>
+  <li><strong>Velocidade com energia ligada:</strong> corre em velocidade normal até avistar o jogador, acelerando de forma perceptível; ao se aproximar, desacelera novamente.</li>
+  <li>Perde completamente sua habilidade se o disjuntor estiver desligado.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a habilidade do Jinn relacionada ao disjuntor
+                e como sua velocidade varia com a energia ligada ou
+                desligada.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@alldaydeejaye" target="_blank"
+                >AllDayDeeJaye</a
+              >
+            </p>
+          </div>
+          <!-- ===================== MARE ===================== -->
+          <div class="desc" data-ghost="mare" hidden>
+          <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>Orbe fantasma</li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 60% no escuro e 40% com as luzes acesas. O Mare é uma entidade que se alimenta da escuridão e teme qualquer fonte de luz, tornando-se mais perigoso em locais apagados.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Prefere ambientes escuros e tende a <strong>apagar luzes</strong> com frequência para aumentar suas chances de ataque.</li>
+  <li>É incapaz de <strong>ligar luzes ou eletrônicos</strong> (como TVs e monitores); se o fantasma fizer isso, o Mare pode ser descartado.</li>
+  <li>Tem mais probabilidade de iniciar caçadas com as luzes apagadas (60%) e menos quando estão acesas (40%).</li>
+  <li>Possui uma habilidade semelhante à do Demônio, podendo <strong>mudar de cômodo</strong> para evitar luzes acesas ou fontes de iluminação próximas.</li>
+  <li>Frequentemente desativa o disjuntor ou apaga luzes próximas antes de iniciar uma caçada.</li>
+  <li>Se o investigador acender uma luz e o fantasma <strong>desligar o interruptor imediatamente</strong>, é um forte indício de que se trata de uma Mare.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a habilidade da Mare de desligar o
+                interruptor logo após ele ser ligado, reforçando sua aversão à
+                luz.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@Bayyyro" target="_blank"
+                >Bayyyro</a
+              >
+            </p>
+          </div>
+          <!-- ===================== REVENANT ===================== -->
+          <div class="desc" data-ghost="revenant" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Orbe fantasma</li>
+  <li>Escrita Fantasma</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Revenant é uma entidade violenta e imprevisível, conhecida por sua mudança drástica de velocidade durante as caçadas, tornando-o letal para jogadores.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Move-se <strong>muito lentamente</strong> enquanto não possui linha de visão do jogador (aprox. 1 m/s).</li>
+  <li>Ao avistar um jogador, acelera de forma extrema, atingindo uma das maiores velocidades entre todos os fantasmas (aprox. 3 m/s).</li>
+  <li>Mesmo após perder a visão, continua avançando rapidamente por alguns segundos antes de desacelerar.</li>
+  <li>Pode mudar de direção repentinamente durante caçadas para perseguir novos alvos visíveis.</li>
+  <li>Não possui habilidades relacionadas à eletricidade ou drenagem de sanidade, mas compensa com velocidade letal.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra como o Revenant acelera ao entrar em Linha de
+                Visão.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@Ionpixel5614" target="_blank"
+                >Ionpixel5614</a
+              >
+            </p>
+          </div>
+          <!-- ===================== SHADE ===================== -->
+          <div class="desc" data-ghost="shade" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Escrita Fantasma</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 35%. O Shade é uma entidade tímida e reservada, que evita interação direta com os investigadores, tornando-se um dos fantasmas mais difíceis de identificar.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Tem chance reduzida de iniciar eventos ou interagir com o ambiente quando há vários jogadores por perto.</li>
+  <li>Fica mais ativo e propenso a ataques apenas quando o jogador está sozinho.</li>
+  <li>Não realiza eventos fantasmais enquanto alguém estiver próximo, podendo ficar longos períodos sem atividade.</li>
+  <li>Durante caçadas, move-se em velocidade normal, sem variações especiais.</li>
+  <li>É mais provável que apareça para jogadores isolados ou com sanidade baixa.</li>
+  <li>De todos os fantasmas, é o que <strong>menos realiza eventos</strong>, o que pode ajudar a identificá-lo pela ausência de atividade.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra como o Shade é visualizado após ser utilizado
+                o círculo de invocação.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@Th3BeardedBaron" target="_blank"
+                >Th3BeardedBaron</a
+              >
+            </p>
+          </div>
+          <!-- ===================== DEMON ===================== -->
+          <div class="desc" data-ghost="demon" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>UV (Impressões Digitais)</li>
+  <li>Escrita Fantasma</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 70%. O Demônio é uma das entidades mais agressivas do jogo, conhecido por caçar mais cedo do que qualquer outro fantasma e por ignorar parcialmente as restrições de itens protetores.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Pode iniciar caçadas com sanidade acima da média, geralmente a partir de <strong>70%</strong>.</li>
+  <li>Tem chance de caçar novamente após intervalos muito curtos, tornando-o extremamente perigoso.</li>
+  <li>Raramente é afetado por crucifixos, neste caso, sua área de bloqueio é maior, mas ele pode ignorá-los ocasionalmente.</li>
+  <li>Pode usar uma habilidade especial para se aproximar de um jogador distante e iniciar uma caçada quase imediatamente.</li>
+  <li>Durante caçadas, move-se em velocidade normal, mas sua frequência de ataques compensa a falta de variação.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra todas as dicas de como identificar esse
+                fantasma super agressivo.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@FracturedFighterTTV"
+                target="_blank"
+                >FracturedFighterTTV</a
+              >
+            </p>
+          </div>
+          <!-- ===================== YUREI ===================== -->
+          <div class="desc" data-ghost="yurei" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Orbe fantasma</li>
+  <li>Projetor DOTS</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Yurei é um espírito que influencia o ambiente ao seu redor, drenando a sanidade dos investigadores e manifestando sua presença através de portas que se movem sozinhas.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>É capaz de <strong>drenar até 15% da sanidade</strong> de todos os jogadores próximos em um único instante.</li>
+  <li>Sua habilidade está diretamente ligada à <strong>atividade em portas.</strong> Se muitas forem tocadas ou fechadas em sequência e a sanidade cair drasticamente, há grande chance de ser um Yurei.</li>
+  <li>Durante o uso de incenso, o Yurei <strong>fica preso em seu cômodo de origem por aproximadamente 90 segundos</strong>.</li>
+  <li>Se o cômodo for defumado e houver atividade fora dele nesse período, o Yurei pode ser descartado como suspeito.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem variações de movimento.</li>
+  <li>Não costuma trocar de sala com frequência, preferindo permanecer no mesmo local por longos períodos.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a ligação do Yurei com portas e como sua
+                sanidade pode ser drenada rapidamente.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@FlashForce" target="_blank"
+                >FlashForce</a
+              >
+            </p>
+          </div>
+          <!-- ===================== ONI ===================== -->
+          <div class="desc" data-ghost="oni" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Projetor DOTS</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Oni é uma entidade extremamente ativa e agressiva, conhecida por se manifestar com frequência e por reagir fortemente à presença de múltiplos jogadores.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>É mais ativo na presença de vários jogadores e tende a provocar eventos constantemente quando há pessoas próximas.</li>
+  <li>Durante as caçadas, fica visível por mais tempo que a maioria dos fantasmas.</li>
+  <li>Não realiza eventos de “air ball”, comportamento característico que ajuda a diferenciá-lo de outros.</li>
+  <li>Raramente reduz a sanidade com aparições rápidas; seus eventos geralmente são mais longos e intensos.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem acelerações especiais.</li>
+  <li>Apresenta grande quantidade de interações físicas em portas, itens e sensores.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo mostra a característica do Oni durante caçadas: ele
+                pisca muito menos, permanecendo visível quase todo o tempo.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@redzorogaming" target="_blank"
+                >RedzoroGaming</a
+              >
+            </p>
+          </div>
+          <!-- ===================== YOKAI ===================== -->
+          <div class="desc" data-ghost="yokai" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>Orbe fantasma</li>
+  <li>Projetor DOTS</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 80%. O Yokai é uma entidade espiritual que se manifesta em resposta a conversas e vozes humanas, tornando-se mais agressivo quando há muito barulho próximo.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Pode iniciar caçadas com sanidade mais alta que a maioria dos fantasmas, geralmente a partir de <strong>80%</strong>, se houver conversa ou ruído constante próximo a ele.</li>
+  <li>Durante caçadas, tem a <strong>audição extremamente limitada</strong>, ouvindo apenas sons muito próximos (cerca de 2 metros de distância).</li>
+  <li>Responde frequentemente na Spirit Box e costuma interagir com microfones parabólicos ou sons de jogadores falando.</li>
+  <li>Torna-se mais ativo quando os investigadores falam próximos ao seu cômodo, mesmo que a sanidade ainda esteja alta.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem variações.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >Este vídeo ilustra como o Yokai reage a sons: fica mais
+                agressivo quando alguém fala dentro da sala favorita dele.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@brenoviski" target="_blank"
+                >Brenoviski</a
+              >
+            </p>
+          </div>
+          <!-- ===================== HANTU ===================== -->
+          <div class="desc" data-ghost="hantu" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Orbe fantasma</li>
+  <li>UV (Impressões Digitais)</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Hantu é uma entidade que se fortalece em ambientes frios e perde velocidade em locais mais quentes, tornando o controle da temperatura um fator essencial na investigação.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Fica <strong>mais rápido em áreas frias</strong> e <strong>mais lento em locais aquecidos</strong> ou com energia ligada.</li>
+  <li>Não pode ligar o disjuntor e prefere ambientes gelados para se mover com maior agilidade.</li>
+  <li>Com o disjuntor desligado, tende a se deslocar rapidamente, especialmente em cômodos com temperaturas abaixo de 3 °C.</li>
+  <li>Com o disjuntor ligado e o ambiente aquecido, torna-se significativamente mais lento.</li>
+  <li>Durante caçadas, exala uma “névoa fria” visível ao redor, um indício visual claro de sua presença.</li>
+  <li>Não acelera com linha de Visão, sua velocidade depende apenas da temperatura ambiente.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra o Hantu em ação com o disjuntor desligado,
+                liberando respirações geladas típicas desse fantasma.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@DontFightDucks" target="_blank"
+                >DontFightDucks</a
+              >
+            </p>
+          </div>
+          <!-- ===================== GORYO ===================== -->
+          <div class="desc" data-ghost="goryo" hidden>
+          <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>UV (Impressões Digitais)</li>
+  <li>Projetor DOTS</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Goryo é uma entidade que raramente se afasta do cômodo de origem e cuja manifestação no DOTS só pode ser observada através de câmeras, nunca a olho nu.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Aparece no <strong>projetor DOTS apenas por câmeras</strong>; os jogadores não conseguem vê-lo pessoalmente.</li>
+  <li>Raramente deixa seu cômodo de origem, sendo um dos fantasmas mais territoriais do jogo.</li>
+  <li>Se a equipe notar o fantasma vagando para outras salas, é possível descartar o Goryo.</li>
+  <li>Mais ativo quando não há jogadores próximos, preferindo interagir à distância.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem alterações relacionadas à linha de visão.</li>
+  <li>Costuma causar confusão por parecer inativo em investigações presenciais, mas ativo através de câmeras.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra o Goryo sendo visto exclusivamente através da
+                câmera, revelando-se no D.O.T.S. enquanto o jogador está fora do
+                cômodo.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@Th3BeardedBaron" target="_blank"
+                >Th3BeardedBaron</a
+              >
+            </p>
+          </div>
+          <!-- ===================== MYLING ===================== -->
+          <div class="desc" data-ghost="myling" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>UV (Impressões Digitais)</li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Myling é uma entidade silenciosa e astuta, conhecida por ser difícil de ouvir durante caçadas, mas extremamente comunicativa através de equipamentos de som.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Durante caçadas, seus passos e sons são <strong>muito mais silenciosos</strong> do que os de outros fantasmas. Às vezes só audíveis quando muito próximos.</li>
+  <li>Apesar de silencioso nas caçadas, o Myling é <strong>altamente ativo em microfones parabólicos</strong> e costuma gerar ruídos com frequência através deles.</li>
+  <li>Pode enganar jogadores ao parecer distante, mesmo estando próximo, devido à redução do alcance de seus sons de passos.</li>
+  <li>Move-se em velocidade normal, sem variações de movimento.</li>
+  <li>Tem comportamento equilibrado em termos de atividade, alternando períodos silenciosos com momentos de ruído intenso captado por equipamentos de som.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra o comportamento silencioso do Myling, com passos
+                quase inaudíveis até o momento do ataque.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@hydrasung" target="_blank"
+                >Hydrasung</a
+              >
+            </p>
+          </div>
+          <!-- ===================== ONRYO ===================== -->
+          <div class="desc" data-ghost="onryo" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>Orbe fantasma</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 60%. O Onryo é conhecido como o “Espírito da Chama”, uma entidade que teme o fogo e usa sua ausência para atacar de forma imprevisível.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Tem maior chance de iniciar caçadas quando uma <strong>vela ou fogo próximo se apaga</strong>.</li>
+  <li>Ao apagar uma vela, pode começar uma caçada imediatamente, especialmente se 3 ou mais velas forem apagadas em sequência.</li>
+  <li>O fogo age como uma forma de “crucifixo natural”, <strong>impedindo ataques temporariamente</strong> enquanto estiver aceso.</li>
+  <li>Caça mais cedo se houver muitas velas apagadas no local, mesmo que a sanidade ainda esteja alta.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem acelerações especiais.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra o comportamento do Onryo apagando velas próximas
+                antes de iniciar uma caçada.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@FlashForce" target="_blank"
+                >FlashForce</a
+              >
+            </p>
+          </div>
+          
+          <!-- ===================== TWINS ===================== -->
+          <div class="desc" data-ghost="the-twins" hidden>
+           <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Spirit Box</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. Os Gêmeos são duas entidades que compartilham o mesmo vínculo espiritual, sendo capazes de agir simultaneamente em diferentes locais do mapa, confundindo os investigadores.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Podem realizar interações em <strong>dois lugares diferentes ao mesmo tempo.</strong> Uma assinatura clara de seu comportamento.</li>
+  <li>Durante as caçadas, apenas um dos gêmeos realmente persegue o jogador, mas o outro pode causar eventos ou distrações em outro cômodo.</li>
+  <li>O “gêmeo principal” move-se em velocidade normal, enquanto o secundário pode ser <strong>ligeiramente mais rápido ou mais lento</strong>, dependendo da distância e do momento da caçada.</li>
+  <li>É comum obter leituras de EMF e sons de Spirit Box em cômodos diferentes em sequência.</li>
+  <li>Podem iniciar caçadas em qualquer um dos dois locais onde manifestam atividade.</li>
+  <li>Quando interagem com o ambiente em dois pontos distintos com pouco intervalo de tempo, quase sempre é um indício dos Gêmeos.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra as interações simultâneas e a diferença de
+                velocidade/posição entre os dois “gêmeos”.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@Lil_P66" target="_blank"
+                >Lil_P66</a
+              >
+            </p>
+          </div>
+          <!-- ===================== RAIJU ===================== -->
+          <div class="desc" data-ghost="raiju" hidden>
+<p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Orbe fantasma</li>
+  <li>Projetor DOTS</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 65%. O Raiju é uma entidade que se alimenta de energia elétrica, tornando-se mais rápido e agressivo quando há equipamentos eletrônicos ligados por perto.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Pode iniciar caçadas mais cedo (a partir de <strong>65%</strong> de sanidade) se houver muitos equipamentos eletrônicos próximos, como câmeras, sensores e lanternas ligadas.</li>
+  <li>Durante caçadas, <strong>acelera consideravelmente</strong> ao se aproximar de eletrônicos ativos, tornando-se um dos fantasmas mais rápidos do jogo.</li>
+  <li>Se todos os dispositivos próximos estiverem desligados, move-se em velocidade normal.</li>
+  <li>Afeta equipamentos com interferência constante: rádios, câmeras e lanternas piscam com mais intensidade quando ele está próximo.</li>
+  <li>Durante caçadas, pode parecer mudar de velocidade repentinamente conforme entra e sai de áreas com eletrônicos ligados.</li>
+  <li>Não possui habilidades especiais relacionadas à drenagem de sanidade; sua vantagem vem da velocidade.</li>
+</ul>
+<br>
+            <p>
+              <em
+                >O vídeo mostra a habilidade do Raiju de acelerar e interferir
+                em eletrônicos próximos enquanto caça.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@lespaul1507" target="_blank"
+                >Lespaul1507</a
+              >
+            </p>
+          </div>
+          <!-- ===================== OBAKE ===================== -->
+          <div class="desc" data-ghost="obake" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>EMF 5</li>
+  <li>Orbe fantasma</li>
+  <li>UV (Impressões Digitais)</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Obake é uma entidade mutante e enigmática, conhecida por deixar impressões digitais únicas e se manifestar de formas incomuns.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Pode deixar <strong>impressões digitais com formatos anormais</strong>, como um dedo a mais.</li>
+  <li>Tem uma pequena chance de <strong>não deixar impressões digitais</strong> após interagir com superfícies que normalmente registrariam a evidência.</li>
+  <li>As impressões digitais do Obake <strong>desaparecem mais rapidamente</strong> que as de outros fantasmas (cerca de 50% do tempo normal).</li>
+  <li>Durante caçadas, pode mudar temporariamente sua aparência “assumindo outras formas” por breves instantes.</li>
+  <li>Move-se em velocidade normal durante caçadas, sem alterações de movimento.</li>
+  <li>Raramente deixa múltiplas evidências seguidas, tornando-o mais difícil de identificar.</li>
+</ul>
+<br>
+            <p>
+              <em>O vídeo mostra o Obake mudando de forma durante a caçada.</em>
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@FlashForce" target="_blank"
+                >FlashForce</a
+              >
+            </p>
+          </div>
+          <!-- ===================== THE MIMIC ===================== -->
+          <div class="desc" data-ghost="the-mimic" hidden>
+            <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>UV (Impressões Digitais)</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Mímico é uma entidade rara e imprevisível, capaz de imitar o comportamento e as habilidades de outros fantasmas, confundindo completamente os investigadores.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>É o único fantasma que pode <strong>copiar as habilidades, comportamentos e padrões de outro fantasma,</strong> inclusive velocidade, agressividade e tipo de eventos.</li>
+  <li>Sempre exibe <strong>Orbes fantasmas “falsas”</strong> como evidência adicional invisível na lista, o que pode enganar os jogadores.</li>
+  <li>Seu comportamento pode mudar repentinamente entre as partidas, pois ele alterna o tipo de fantasma que está imitando.</li>
+  <li>Pode reproduzir sinais únicos de outros fantasmas, como drenagem de sanidade, interação com o sal, ou padrões de velocidade em caçadas.</li>
+  <li>As mudanças de comportamento ocorrem de forma aleatória e imprevisível, mesmo dentro da mesma investigação.</li>
+  <li>Move-se em velocidade variável, dependendo do fantasma que estiver imitando naquele momento.</li>
+  <li>Pode causar confusão com combinações incomuns de evidências e padrões de atividade.</li>
+</ul>
+<br>
+            <p>
+              <em></em>
+                O vídeo mostra o Mímico revelando uma Orbe falsa. se o fantasma
+                apresentar quatro evidências, incluindo Orbe, trata-se com
+                certeza de um Mímico.</em
+              >
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@FlashForce" target="_blank"
+                >FlashForce</a
+              >
+            </p>
+          </div>
+          <!-- ===================== MOROI ===================== -->
+<div class="desc" data-ghost="moroi" hidden>
+  <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Spirit Box</li>
+  <li>Escrita Fantasma</li>
+  <li>Temperaturas Baixas</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 50%. O Moroi é um espírito amaldiçoador que drena a sanidade dos investigadores de forma contínua, tornando-os vulneráveis a ataques mais rápidos e frequentes.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>Ao ouvir sua voz através da <strong>Spirit Box</strong> ou microfone parabólico, o jogador é amaldiçoado e começa a perder sanidade de forma constante, mesmo em ambientes iluminados.</li>
+  <li>Quanto <strong>menor a sanidade</strong> do jogador, <strong>mais rápido o Moroi se torna</strong> durante caçadas. Ele pode atingir uma das maiores velocidades do jogo.</li>
+  <li>Com sanidade alta, move-se lentamente, o que pode enganar os investigadores no início da partida.</li>
+  <li>A maldição pode afetar vários jogadores se todos ouvirem sua resposta na Spirit Box.</li>
+  <li>Não possui habilidades ligadas a eletricidade ou objetos; seu foco é psicológico e direto sobre os jogadores.</li>
+  <li>A drenagem de sanidade é mais intensa em quem interage com ele verbalmente.</li>
+</ul>
+<br>
+  <p>
+    <em
+      >O vídeo mostra o Moroi acelerando conforme a sanidade do jogador cai,
+      destacando seu comportamento cada vez mais agressivo.</em
+    >
+  </p>
+  <p>
+    <strong>Fonte:</strong>
+    <a href="https://www.youtube.com/@FlashForce" target="_blank">FlashForce</a>
+  </p>
+</div>
+<!-- ===================== THAYE ===================== -->
+<div class="desc" data-ghost="thaye" hidden>
+  <p><strong>Evidências:</strong></p>
+<ul>
+  <li>Orbe fantasma</li>
+  <li>Projetor DOTS</li>
+  <li>Escrita Fantasma</li>
+</ul>
+<br>
+
+<p><strong>Sanidade para Caçar:</strong> 75%. O Thaye é uma entidade única que envelhece com o tempo, alterando completamente seu comportamento: começa extremamente ativo e perigoso, mas torna-se cada vez mais lento e pacífico conforme a investigação avança.</p>
+
+<h4>Características:</h4>
+<ul>
+  <li>No início da partida, o Thaye é <strong>muito ativo e veloz</strong>, podendo iniciar caçadas mais cedo que outros fantasmas (a partir de 75% de sanidade).</li>
+  <li>Com o passar do tempo e a presença constante de investigadores próximos, ele “envelhece”, tornando-se progressivamente <strong>mais lento e menos ativo</strong>.</li>
+  <li>A cada envelhecimento, sua velocidade e taxa de eventos diminuem de forma perceptível.</li>
+  <li>Quando completamente envelhecido, torna-se um dos fantasmas <strong>mais lentos e passivos</strong> do jogo.</li>
+  <li>As evidências podem demorar a surgir, pois sua atividade cai bastante após envelhecer.</li>
+</ul>
+<br>
+  <p>
+    <em
+      >O vídeo mostra o Thaye sendo identificado pela Tábua Ouija, revelando que
+      o fantasma envelhece com o tempo conforme sua idade aumenta entre as
+      perguntas</em
+    >
+  </p>
+  <p>
+    <strong>Fonte:</strong>
+    <a href="https://www.youtube.com/@hydrasung" target="_blank">Hydrasung</a>
+  </p>
+</div>
+
+
+        </div>
+      </div>
+    </div>
+
+<script src="js/main.js" defer></script>
+
+<script type="module" src="js/ghosts.js"></script>
+
+  </body>
+</html>

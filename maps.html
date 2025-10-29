@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>WikiPhasmo — Mapas</title>
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="maps-page" data-page="maps">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html"
+          ><span class="logo">👻</span> WikiPhasmo</a
+        >
+        <button class="hamburger" id="menuBtn" aria-label="Menu">☰</button>
+        <nav id="menu" class="menu">
+          <a href="ghosts.html">Fantasmas</a>
+          <a href="maps.html" class="tab-btn active">Mapas</a>
+          <a href="items.html">Itens</a>
+          <a href="cursed.html">Amaldiçoados</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Mapas</h1>
+      <div class="section-head">
+        <div class="row">
+          <select
+            id="sizeFilter"
+            class="input"
+            aria-label="Filtrar por tamanho do mapa"
+          >
+            <option value="">Tamanho</option>
+            <option value="pequeno">Pequeno</option>
+            <option value="médio">Médio</option>
+            <option value="grande">Grande</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="mapGrid" class="grid auto"></div>
+    </main>
+
+    <!-- ===== Modal compartilhado para preview das plantas ===== -->
+    <div id="pwMapModal" class="pw-modal" aria-hidden="true">
+      <div
+        class="pw-backdrop"
+        onclick="pwCloseMapModal()"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="pw-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Planta do mapa"
+      >
+        <button
+          class="pw-close"
+          onclick="pwCloseMapModal()"
+          aria-label="Fechar"
+        >
+          ✕
+        </button>
+
+        <div class="pw-img-canvas">
+          <img id="pwMapModalImg" alt="Planta do mapa" />
+        </div>
+
+        <div class="pw-sourcebar" id="pwMapSource"></div>
+      </div>
+    </div>
+
+    <p style="text-align: center">
+      <strong>Fontes:</strong>
+      <a href="https://phasmo.karotte.org/" target="_blank">Karotte</a>
+      e
+      <a href="https://maps.phasmophobia.su/" target="_blank">Su</a>
+    </p>
+
+    <footer class="site-footer">
+      <div class="container foot">
+        <small>
+          Desenvolvido por Lívia Silveira da Rosa ©
+          <span id="year"></span> WikiPhasmo
+        </small>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script type="module" src="js/maps.js"></script>
+  </body>
+</html>

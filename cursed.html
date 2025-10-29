@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WikiPhasmo — Objetos amaldiçoados</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="cursed">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <span class="logo">👻</span> WikiPhasmo
+        </a>
+        <button class="hamburger" id="menuBtn" aria-label="Menu">☰</button>
+        <nav id="menu" class="menu">
+          <a href="ghosts.html">Fantasmas</a>
+          <a href="maps.html">Mapas</a>
+          <a href="items.html">Itens</a>
+          <a href="cursed.html" class="tab-btn active">Amaldiçoados</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Objetos amaldiçoados</h1>
+      <div id="cursedGrid" class="grid auto"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container foot">
+        <small>
+          Desenvolvido por Lívia Silveira da Rosa ©
+          <span id="year"></span> WikiPhasmo
+        </small>
+      </div>
+    </footer>
+
+    <!-- Modal de vídeo (Amaldiçoados) -->
+    <div id="cursedVideoModal" class="pw-modal" aria-hidden="true">
+      <div class="pw-backdrop" aria-label="Fechar" role="button"></div>
+      <div
+        class="pw-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Player de vídeo — Amaldiçoados"
+      >
+        <button id="cursedClose" class="pw-close" aria-label="Fechar">✕</button>
+
+        <div class="video-wrap">
+          <iframe
+            id="cursedYt"
+            src=""
+            title="YouTube player"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div id="cursedDesc" class="video-desc">
+          <!-- === Tabuleiro Ouija === -->
+          <div class="desc" data-item="ouija-board" hidden>
+            <h4>Uso</h4>
+            <p>
+              O Tabuleiro Ouija deixa cair uma <strong>prancheta</strong> quando
+              o jogador clica com o botão direito enquanto o segura. Essa
+              prancheta desaparece ao passar o cursor sobre “Adeus” após o
+              jogador dizer “Au Revoir” diante do tabuleiro.
+            </p>
+
+            <p>
+              Afastar-se do tabuleiro enquanto a prancheta ainda está sobre ele
+              o torna
+              <strong>inutilizável</strong> e inicia uma
+              <strong>Caçada Amaldiçoada</strong>. Fazer uma pergunta faz com
+              que o fantasma escreva a resposta diretamente no tabuleiro, e é
+              possível <strong>fotografar a interação</strong>.
+            </p>
+
+            <p>
+              Se o jogador não tiver sanidade suficiente para a pergunta feita,
+              o tabuleiro se tornará
+              <strong>inutilizável</strong> e desencadeará uma
+              <strong>caçada amaldiçoada</strong>.
+            </p>
+
+            <h4>Detalhes adicionais</h4>
+            <ul class="tips">
+              <li>
+                O Tabuleiro Ouija pode gerar uma leitura de
+                <strong>EMF 5</strong>, caso o fantasma tenha essa evidência.
+              </li>
+              <li>
+                É o <strong>único objeto amaldiçoado</strong> que revela a
+                <strong>localização do osso</strong>.
+              </li>
+              <li>
+                Se for levado para fora do local, a prancheta se retrai
+                automaticamente, sem precisar dizer “Adeus”.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@BansheeBaitContent"
+                target="_blank"
+                rel="noopener"
+              >
+                @BansheeBaitContent
+              </a>
+            </p>
+          </div>
+          <!-- === Cartas de Tarô === -->
+          <div class="desc" data-item="tarot-cards" hidden>
+            <h4>Uso</h4>
+            <ul class="tips">
+              <li>O baralho contém <strong>10 cartas aleatórias</strong>.</li>
+              <li>
+                Para usar, clique com o <strong>botão direito</strong> enquanto
+                segura o baralho.
+              </li>
+              <li>
+                O <strong>efeito</strong> da carta é aplicado
+                <strong>instantaneamente</strong>.
+              </li>
+              <li>
+                Se a carta for <strong>“Morte”</strong>, inicia uma
+                <strong>Caçada Amaldiçoada</strong>.
+              </li>
+              <li>
+                Comprar uma carta durante uma <strong>caçada</strong> tem 100%
+                de chance de resultar em <strong>“O Louco”</strong> (sem
+                efeito).
+              </li>
+              <li>
+                Comprar as <strong>10 cartas</strong> de um único baralho
+                <strong>estende a duração</strong> das caçadas subsequentes,
+                mesmo sem tirar “Morte”.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/Thebrplay"
+                target="_blank"
+                rel="noopener"
+              >
+                @Thebrplay
+              </a>
+            </p>
+          </div>
+          <!-- === Caixa de Música  === -->
+          <div class="desc" data-item="music-box" hidden>
+            <h4>Uso</h4>
+            <ul class="tips">
+              <li>
+                <strong>Ligar:</strong> clique com o
+                <strong>botão direito</strong> enquanto segura.
+              </li>
+              <li>Ela <strong>desliga</strong> quando a melodia termina.</li>
+              <li>
+                Pode ser <strong>colocada no chão/móvel</strong> para continuar
+                tocando sozinha.
+              </li>
+              <li>
+                Jogadores próximos a uma caixa tocando podem perder de
+                <strong>0% a 77,5%</strong> de sanidade, dependendo da
+                <strong>distância</strong> e do <strong>tempo</strong> ouvindo.
+              </li>
+              <li>
+                Se estiver tocando e for levada a <strong>≤ 5 m</strong> da
+                entidade, ela <strong>aparece</strong> e começa a se mover em
+                direção à caixa.
+              </li>
+            </ul>
+
+            <h4>Riscos</h4>
+            <ul class="tips">
+              <li>
+                Se, durante o uso, a
+                <strong>sanidade do usuário for insuficiente</strong> ou a caixa
+                for <strong>arremessada</strong>, ela se torna
+                <strong>inutilizável</strong>, emite um “dong” e inicia uma
+                <strong>Caçada Amaldiçoada</strong>.
+              </li>
+              <li>
+                A entidade pode caminhar em direção à caixa por até
+                <strong>5 s</strong> se ela estiver no chão, ou até
+                <strong>~1 m</strong> do jogador que a segura; depois disso, a
+                entidade <strong>inicia uma Caçada Amaldiçoada</strong> e a
+                caixa fica <strong>inutilizável</strong>.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@DontFightDucks"
+                target="_blank"
+                rel="noopener"
+              >
+                @DontFightDucks
+              </a>
+            </p>
+          </div>
+          <!-- === Espelho Amaldiçoado  === -->
+          <div class="desc" data-item="haunted-mirror" hidden>
+            <h4>Uso</h4>
+            <p>
+              O <strong>Espelho Amaldiçoado</strong> pode ser
+              <strong>ativado e desativado</strong>
+              enquanto o jogador estiver dentro da área de investigação. Ele é
+              <strong>automaticamente desativado</strong> ao ser levado para
+              fora.
+            </p>
+
+            <p>
+              Quando ativado, o espelho mostra uma
+              <strong>visão panorâmica</strong> da
+              <strong>sala favorita</strong> da entidade, vista a partir do
+              centro do cômodo. Essa visão é um <strong>feed ao vivo</strong>,
+              exibindo luzes acesas, objetos movidos, equipamentos e jogadores
+              presentes no local — com exceção do modelo do próprio jogador.
+            </p>
+
+            <p>
+              O espelho também emite um <strong>brilho tênue</strong> visível
+              para todos os jogadores, mesmo fora do espelho, revelando parte da
+              sala favorita e ajudando a confirmar sua localização.
+            </p>
+
+            <h4>Sanidade e Efeitos</h4>
+            <ul class="tips">
+              <li>
+                Cada uso (desde o momento em que é levantado até ser abaixado)
+                reduz a sanidade em <strong>7,5% por segundo</strong> ou em
+                <strong>20%</strong>, o que for maior.
+              </li>
+              <li>
+                Isso significa que usar o espelho por menos de
+                <strong>~2,7 segundos</strong> ainda resultará em uma perda
+                mínima de <strong>20%</strong> de sanidade.
+              </li>
+            </ul>
+
+            <h4>Riscos</h4>
+            <p>
+              O espelho <strong>racha</strong> visual e sonoramente,
+              desencadeando uma <strong>Caçada Amaldiçoada</strong> se:
+            </p>
+            <ul class="tips">
+              <li>
+                O jogador atingir <strong>0% de sanidade</strong> enquanto o
+                utiliza;
+              </li>
+              <li>
+                Ou ativá-lo com <strong>menos de 20% de sanidade</strong>.
+              </li>
+            </ul>
+            <p>
+              Após quebrar, o espelho se
+              <strong>abaixa automaticamente</strong> e não pode mais ser usado
+              pelo restante da investigação.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@ecosdocorvo"
+                target="_blank"
+                rel="noopener"
+              >
+                @ecosdocorvo
+              </a>
+            </p>
+          </div>
+
+          <!-- === Círculo de Invocação === -->
+          <div class="desc" data-item="summoning-circle" hidden>
+            <h4>Uso</h4>
+            <ul class="tips">
+              <li>
+                Para ativar o círculo,
+                <strong>acenda as 5 velas vermelhas</strong> mirando nelas e
+                pressionando <em>Uso Secundário</em> com um
+                <strong>isqueiro</strong> ou <strong>firelight</strong> aceso.
+              </li>
+              <li>
+                Cada vela acesa reduz <strong>16% da sanidade</strong> dos
+                jogadores próximos.
+              </li>
+              <li>O fantasma <strong>não pode acender</strong> essas velas.</li>
+              <li>
+                As velas podem ser <strong>apagadas pelo fantasma</strong>, como
+                as comuns, mas não se apagam sozinhas, exceto se forem acesas
+                com o jogador tendo menos de 16% de sanidade.
+              </li>
+              <li>
+                Acender novamente uma vela apagada drena
+                <strong>mais 16% de sanidade</strong>.
+              </li>
+            </ul>
+
+            <h4>Invocação</h4>
+            <ul class="tips">
+              <li>
+                Quando as <strong>cinco velas</strong> estão acesas, o fantasma
+                é <strong>invocado</strong> e se <strong>materializa</strong>.
+              </li>
+              <li>
+                Um <strong>Shade</strong> pode aparecer apenas como uma
+                <strong>sombra translúcida</strong>.
+              </li>
+              <li>
+                O fantasma fica <strong>imóvel por 5 segundos</strong> (evento
+                fantasma) antes de iniciar uma
+                <strong>Caçada Amaldiçoada</strong> no mesmo local.
+              </li>
+              <li>
+                A <strong>porta da frente tranca imediatamente</strong> após
+                acender a última vela.
+              </li>
+              <li>
+                Depois de usado, o círculo
+                <strong>não pode ser reutilizado</strong>.
+              </li>
+            </ul>
+
+            <h4>Casos especiais</h4>
+            <ul class="tips">
+              <li>
+                Se uma vela for acesa com o jogador abaixo de
+                <strong>16% de sanidade</strong>:
+                <ul>
+                  <li>
+                    Se <strong>não for a última vela</strong>, ela se apaga após
+                    alguns segundos.
+                  </li>
+                  <li>
+                    Se <strong>for a última vela</strong>, não há evento
+                    fantasma — a <strong>Caçada Amaldiçoada</strong> começa após
+                    <strong>1 segundo</strong>.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Um <strong>Crucifixo Tier III</strong> pode impedir a Caçada
+                Amaldiçoada se usado estrategicamente — ideal para tirar fotos
+                em segurança.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@KingCarlPT"
+                target="_blank"
+                rel="noopener"
+              >
+                @KingCarlPT
+              </a>
+            </p>
+          </div>
+          <!-- === Boneco Vodu  === -->
+          <div class="desc" data-item="voodoo-doll" hidden>
+            <h4>Uso</h4>
+            <p>
+              Interagir com o boneco faz com que
+              <strong>um dos 10 alfinetes</strong> seja pressionado
+              aleatoriamente. Isso força o fantasma a realizar uma
+              <strong>interação</strong> e reduz a sanidade do usuário em
+              <strong>5%</strong>. As interações forçadas podem gerar
+              <strong>EMF 5</strong> e <strong>Ultravioleta</strong>, mas
+              <strong>não</strong> afetam o
+              <em>Livro de Escrita Fantasma. </em> Se o
+              <strong>alfinete do coração</strong> for pressionado, a sanidade
+              do usuário é reduzida em <strong>10%</strong> e uma
+              <strong>Caçada Amaldiçoada</strong> é iniciada.
+            </p>
+            <p>
+              Se o usuário interagir com o boneco estando em
+              <strong>0% de sanidade</strong>,
+              <strong>todos os alfinetes restantes</strong> serão pressionados e
+              uma <strong>Caçada Amaldiçoada</strong> também ocorrerá.
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@Lil_P66"
+                target="_blank"
+                rel="noopener"
+              >
+                @Lil_P66
+              </a>
+            </p>
+          </div>
+          <!-- === Mão do Macaco === -->
+          <div class="desc" data-item="monkey-paw" hidden>
+            <p>
+              A <strong>Mão do Macaco</strong> concede ao jogador um número
+              limitado de <strong>desejos</strong>, variando conforme a
+              dificuldade:
+            </p>
+
+            <ul class="tips">
+              <li><strong>Amador:</strong> 5 desejos</li>
+              <li><strong>Intermediário:</strong> 4 desejos</li>
+              <li><strong>Profissional ou superior:</strong> 3 desejos</li>
+            </ul>
+
+            <h4>Desejos relacionados ao fantasma</h4>
+            <ul class="tips">
+              <li>
+                <strong>“I wish to see the ghost”</strong> — Inicia um
+                <strong>evento fantasma</strong> por 5 segundos seguido de uma
+                <strong>Caçada Amaldiçoada</strong>; a visão do jogador fica
+                extremamente turva.
+              </li>
+              <li>
+                <strong>“I wish for activity”</strong> — Dobra toda a
+                <strong>atividade</strong> por 2 minutos, mas
+                <strong>tranca a porta da frente</strong>
+                pelo mesmo período.
+              </li>
+              <li>
+                <strong>“I wish to trap the ghost”</strong> — Prende o fantasma
+                em seu cômodo por <strong>1 minuto</strong>.
+              </li>
+            </ul>
+
+            <h4>Desejos relacionados ao jogador</h4>
+            <ul class="tips">
+              <li>
+                <strong>“I wish to be sane”</strong> — Define a sanidade de
+                todos os jogadores para <strong>50%</strong>.
+              </li>
+              <li>
+                <strong>“I wish to be safe”</strong> — Desbloqueia o
+                <strong>esconderijo mais próximo</strong> bloqueado, mas faz com
+                que o jogador se torne o <strong>alvo do fantasma</strong>
+                até o fim da partida.
+              </li>
+              <li>
+                <strong>“I wish to leave”</strong> — Desbloqueia todas as
+                saídas, mesmo durante uma caçada, porém reduz a
+                <strong>velocidade de corrida</strong> e
+                <strong>embaça severamente a visão</strong>.
+              </li>
+            </ul>
+
+            <h4>Outros desejos</h4>
+            <ul class="tips">
+              <li>
+                <strong>“I wish to revive my friend”</strong> — Restaura a vida
+                de um jogador morto, com <strong>50% de chance</strong> de matar
+                quem fez o desejo em troca.
+              </li>
+              <li>
+                <strong>“I wish for knowledge”</strong> — Remove uma evidência
+                incorreta do diário e todos os fantasmas associados a ela, mas
+                <strong>inicia uma Caçada Amaldiçoada</strong> e reduz
+                drasticamente a visão e a audição do jogador. É altamente
+                recomendado que outro jogador ajude a encontrar um esconderijo
+                após usá-lo.
+              </li>
+            </ul>
+
+            <h4>Desejos de clima</h4>
+            <ul class="tips">
+              <li>
+                <strong>“I wish for day/night”</strong> — Alterna entre dia e
+                noite.
+              </li>
+              <li>
+                <strong>“I wish for rain/clear”</strong> — Alterna entre clima
+                chuvoso e limpo.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@TheCaptainPotato_"
+                target="_blank"
+                rel="noopener"
+              >
+                @TheCaptainPotato_
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js" defer></script>
+    <script type="module" src="js/cursed.js"></script>
+  </body>
+</html>

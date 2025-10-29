@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WikiPhasmo — Itens e Variações</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <span class="logo">👻</span> WikiPhasmo
+        </a>
+        <button class="hamburger" id="menuBtn" aria-label="Menu">☰</button>
+        <nav id="menu" class="menu">
+          <a href="ghosts.html">Fantasmas</a>
+          <a href="maps.html">Mapas</a>
+          <a href="items.html" class="tab-btn active">Itens</a>
+          <a href="cursed.html">Amaldiçoados</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Itens e Variações</h1>
+
+      <p class="muted">
+        Cada item pode possuir diferentes níveis (Tier 1, 2 e 3), que afetam seu
+        alcance, precisão ou velocidade. Clique em um card para assistir ao
+        vídeo demonstrativo de evolução do item.
+      </p>
+
+      <div class="section-head">
+        <div class="row">
+          <input
+            id="searchItems"
+            class="input"
+            placeholder="Buscar item..."
+            aria-label="Buscar item"
+          />
+        </div>
+      </div>
+
+      <!-- grade de cards -->
+      <div id="itemGrid" class="grid auto"></div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container foot">
+        <small>
+          Desenvolvido por Lívia Silveira da Rosa ©
+          <span id="year"></span> WikiPhasmo
+        </small>
+      </div>
+    </footer>
+
+    <!-- Modal de vídeo YouTube -->
+    <div id="videoModal" class="pw-modal" aria-hidden="true">
+      <div
+        class="pw-backdrop"
+        role="button"
+        tabindex="0"
+        aria-label="Fechar vídeo"
+      ></div>
+      <div
+        class="pw-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Player de vídeo"
+      >
+        <button id="pwClose" class="pw-close" aria-label="Fechar">✕</button>
+
+        <div class="video-wrap" style="position: relative; padding-top: 56.25%">
+          <iframe
+            id="ytFrame"
+            src=""
+            title="YouTube player"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen
+            style="
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              border: 0;
+            "
+          ></iframe>
+        </div>
+
+        <!-- Lanterna -->
+        <div id="videoDesc" class="video-desc">
+          <div class="desc" data-item="flashlight">
+            <p>
+              A lanterna é um dos equipamentos essenciais em Phasmophobia, usada
+              para melhorar a visibilidade em locais escuros. Quando ativada,
+              projeta um feixe cônico de luz de curto alcance que ajuda na
+              exploração de ambientes escuros.
+            </p>
+            <p>
+              Durante uma <strong>caçada</strong>, a lanterna piscará
+              rapidamente se o fantasma estiver a até
+              <strong>10 metros</strong> (ou 15 metros, no caso de um
+              <em>Raiju</em>) e no mesmo andar. Assim como outros equipamentos
+              eletrônicos, manter a lanterna acesa a menos de 7,5 metros do
+              fantasma pode atrair sua atenção.
+            </p>
+            <p>
+              <em>
+                Este vídeo mostra a diferença entre as versões da lanterna (Tier
+                1 a 3), evidenciando o alcance e a intensidade de luz de cada
+                nível.
+              </em>
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a href="https://www.youtube.com/@NotRamey" target="_blank"
+                >@NotRamey</a
+              >
+            </p>
+          </div>
+          <div class="desc" data-item="uv-light" hidden>
+            <p>
+              A Luz Ultravioleta projeta uma luz <strong>roxa</strong> e é mais
+              <strong>fraca</strong> do que as lanternas.
+              <strong>Tier&nbsp;I</strong> e
+              <strong>Tier&nbsp;III</strong> contam como equipamento eletrônico:
+              piscam perto de um fantasma se manifestando e podem atraí-lo
+              durante uma caçada quando estiverem por perto.
+            </p>
+            <p>
+              Fantasmas que dão evidência ultravioleta deixam marcas em
+              <strong>portas</strong>, <strong>interruptores</strong> e
+              <strong>janelas</strong>, além de <strong>pegadas</strong> ao
+              pisar no sal. Essas marcas ficam
+              <strong>visíveis e verdes</strong> quando iluminadas com a Luz UV.
+            </p>
+            <p>
+              <strong>Tier&nbsp;I</strong>: lanterna UV com feixe
+              <em>estreito</em> (spot). Conta como eletrônico (piscas/atrai em
+              caçada).
+            </p>
+            <p>
+              <strong>Tier&nbsp;II</strong>: <em>glowstick</em> pequeno. Ao
+              ativar, brilha forte por ~1 minuto e então reduz para metade em
+              ~10s. Após isso, dá para <em>chacoalhar</em> (uso primário) para
+              revitalizar a luz.
+            </p>
+            <p>
+              <strong>Tier&nbsp;III</strong>: lanterna UV com feixe
+              <em>bem mais amplo</em> e <em>tempo de carga</em> menor que a Tier
+              I. Também é eletrônico.
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@ChickyTV"
+                target="_blank"
+                rel="noopener"
+                >@ChickyTV</a
+              >
+            </p>
+          </div>
+          <!-- 
+          EMF READER  -->
+          <div class="desc" data-item="emf-reader" hidden>
+            <p>
+              O <strong>EMF</strong> pode ser ligado para começar a
+              captar emissões. O <em>alcance efetivo</em> e o modo de exibir a
+              leitura dependem do <strong>tier</strong> do equipamento.
+            </p>
+
+            <p>
+              Segurar um EMF ligado a <strong>até 7,5 m</strong> de um fantasma
+              (ou <strong>2,5 m</strong> no caso de um <em>Yokai</em>) durante
+              uma <strong>caçada</strong> no mesmo andar pode
+              <strong>atraí-lo</strong>. Em caçadas ou quando o fantasma se
+              manifesta, EMFs a <strong>até 10 m</strong> (ou mais para um
+              <em>Raiju</em>) entram em mau funcionamento e mostram
+              <strong>valores aleatórios</strong> entre nível
+              <strong>1</strong> e <strong>4</strong>.
+            </p>
+
+            <h4>Tier I</h4>
+            <p>
+              Modelo antigo (lembra um contador Geiger) com alcance de
+              <strong>~1,7 m</strong>. Ao detectar EMF, começa a
+              <em>clicar</em> e o <strong>ponteiro</strong> se move até a região
+              do nível detectado, oscilando por ser um equipamento velho. Para
+              contar <strong>EMF Nível 5</strong>, o ponteiro
+              <em>dispara</em> até o extremo direito e <strong>passa</strong> da
+              marca de 5, oscilando bem menos; ficar só abaixo/na marca
+              <strong>não conta</strong>.
+            </p>
+
+            <h4>Tier II</h4>
+            <p>
+              Caixinha com <strong>5 LEDs coloridos</strong> (cada um representa
+              um nível). Alcance de <strong>~2 m</strong>. Ao detectar emissão,
+              acende a quantidade de LEDs correspondente e toca um
+              <em>tom</em> relativo ao nível. Se houver várias fontes, o K2
+              mostra a de <strong>maior nível</strong> (movimentar-se pode fazer
+              alternar). Em <strong>EMF 5</strong>, os
+              <strong>5 LEDs</strong> acendem com tom mais agudo.
+            </p>
+
+            <h4>Tier III</h4>
+            <p>
+              Dispositivo tipo PDA com tela grande; alcance de
+              <strong>~3,5 m</strong>. Consegue
+              <strong>rastrear até 3 interações</strong> simultâneas, exibindo:
+              o nível (preenchendo <em>traços</em>), a
+              <strong>distância</strong> (em metros) e a
+              <strong>direção</strong> da interação, ótimo para localizar a
+              fonte. Em níveis abaixo de 5, emite um <em>beep</em> padrão; em
+              <strong>EMF 5</strong>, todos os traços se preenchem e o beep é
+              mais agudo/único.
+            </p>
+
+            <p class="muted" style="margin-top: 0.5rem">
+              Níveis de EMF: <strong>1</strong> a <strong>5</strong>. Apenas o
+              <strong>EMF 5</strong> é evidência.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@the_brotaterchip"
+                target="_blank"
+                rel="noopener"
+              >
+                @the_brotaterchip
+              </a>
+            </p>
+          </div>
+          <!-- === Termômetro === -->
+          <div class="desc" data-item="thermometer" hidden>
+            <p>
+              <strong>Tier I</strong><br />
+              Lê passivamente a temperatura do <em>último cômodo</em> em que foi
+              segurado: o líquido vermelho (álcool) sobe/desce lentamente
+              conforme o novo ambiente é mais quente/frio que o anterior. É
+              <strong>bem lento</strong> para atualizar (≈
+              <strong>0,33&nbsp;°C/s</strong>), mas tem duas vantagens: é
+              <strong>totalmente passivo</strong> e
+              <strong>não é eletrônico</strong>, então
+              <em>não atrai o fantasma</em> durante caçadas.
+            </p>
+            <p>
+              Mostra <strong>°C</strong> (lado esquerdo) e
+              <strong>°F</strong> (lado direito). A leitura pode oscilar até
+              <strong>+3&nbsp;°C</strong> em relação ao valor real.
+            </p>
+
+            <p>
+              <strong>Tier II</strong><br />
+              Pode ser alternado para <em>ligar o display</em>. Segurar o botão
+              de uso faz o termômetro medir a temperatura do
+              <strong>cômodo atual</strong> a cada <strong>2,5&nbsp;s</strong>,
+              em <strong>°C</strong> (pode mudar para <strong>°F</strong> nas
+              configurações). A leitura também pode variar até
+              <strong>+3&nbsp;°C</strong>.
+            </p>
+
+            <p>
+              <strong>Tier III</strong><br />
+              Igual ao Tier II no uso (liga o display e mede ao segurar), porém
+              <strong>mais rápido</strong>: intervalo de apenas
+              <strong>1,5&nbsp;s</strong> entre leituras.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@ChickyTV"
+                target="_blank"
+                rel="noopener"
+                >@ChickyTV</a
+              >
+            </p>
+          </div>
+          <!-- === Spirit Box === -->
+          <div class="desc" data-item="spirit-box" hidden>
+            <p>
+              A <strong>Spirit Box</strong> quando ativa, emite um <em>ruído estático contínuo e serve para se comunicar com o fantasma.</em>.
+            </p>
+
+            <p>
+              O LED/ícone do <strong>microfone</strong> indica se a Spirit Box
+              está <em>escutando</em> (quando Push-to-Talk ou Toggle é usado) ou
+              recebendo <em>entrada de voz</em> (quando o modo é Ativação por
+              Voz).
+            </p>
+
+            <h4>Registro de perguntas & resultados</h4>
+            <p>
+              Quando uma pergunta é registrada com sucesso, um de dois
+              resultados ocorre:
+            </p>
+            <ul class="tips">
+              <li>
+                <strong>Resposta válida (evidência)</strong> — se as
+                <em>condições relevantes</em>
+                forem atendidas e o “sorteio” de chance passar:
+                <br />
+                <em>Tier I</em>: o LED do fantasma fica
+                <strong>branco</strong> · <em>Tier II</em>: aparece o
+                <strong>ícone do fantasma</strong> · <em>Tier III</em>: os LEDs
+                de resposta ficam <strong>brancos</strong>. Você ouvirá uma
+                <strong>voz distorcida</strong> pela Spirit Box. Isso conta como
+                <strong>evidência de Spirit Box</strong>.
+              </li>
+              <li>
+                <strong>Sem resposta válida</strong> — se alguma condição não
+                foi atendida:
+                <br />
+                <em>Tier I</em>: o LED do fantasma fica
+                <strong>vermelho</strong> · <em>Tier II</em>: aparece o
+                <strong>ícone “X”</strong> · <em>Tier III</em>: os LEDs de
+                resposta ficam <strong>vermelhos</strong>.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@the_brotaterchip"
+                target="_blank"
+                rel="noopener"
+              >
+                @the_brotaterchip
+              </a>
+            </p>
+          </div>
+          <!-- === Câmera de Vídeo === -->
+          <div class="desc" data-item="video-camera" hidden>
+            <p>
+              Ao segurar uma <strong>câmera de vídeo</strong>, sua
+              <em>tela flip</em> abre automaticamente. Se o jogador estiver
+              dentro do <strong>caminhão</strong>, a tela só abrirá após sair
+              dele.
+            </p>
+
+            <p>
+              A câmera pode ser usada <strong>na mão</strong> (usando o visor
+              embutido) ou colocada em <strong>superfícies planas</strong> ou em
+              um <strong>tripé</strong>. Ao segurar a tecla de posicionamento,
+              aparece uma <em>prévia translúcida</em> indicando o enquadramento
+              e direção, ajustável com o movimento do mouse. Mesmo locais
+              marcados como válidos podem causar a queda da câmera por conta da
+              <em>geometria</em> ou de objetos próximos.
+            </p>
+
+            <p>
+              A câmera começa a <strong>transmitir automaticamente</strong> para
+              o <em>computador do caminhão</em> assim que é aberta ou
+              posicionada.
+            </p>
+
+            <h4>Interferência e estabilidade</h4>
+            <p>
+              Quando o fantasma se manifesta — em eventos ou caçadas — todas as
+              câmeras próximas sofrem <strong>interferência</strong> e a imagem
+              é <em>distorcida</em> tanto no visor quanto na transmissão.
+              Modelos de <strong>tiers mais altos</strong> têm qualidade de
+              imagem superior e são <strong>menos afetados</strong>, o que ajuda
+              a observar ou rastrear o fantasma nesses momentos.
+            </p>
+
+            <p>
+              Fantasmas podem <strong>derrubar câmeras</strong> próximas
+              ocasionalmente, exigindo atenção dos jogadores. Colocar a câmera
+              em um <strong>tripé</strong> reduz essa chance e a estabilidade
+              depende do <strong>tier</strong> do tripé.
+            </p>
+
+            <h4>Funções adicionais</h4>
+            <ul class="tips">
+              <li>
+                <strong>Visão noturna</strong> pode ser ativada segurando a
+                câmera ou pelo teclado do caminhão; permite ver
+                <em>Orbes Fantasma</em>.
+              </li>
+              <li>
+                Segurar o botão de uso enquanto a câmera está ativa inicia uma
+                <strong>gravação de vídeo</strong>. Se um alvo válido for
+                capturado, o registro aparece na aba <em>“Mídia”</em> do diário.
+              </li>
+              <li>
+                Também é possível iniciar gravações diretamente do
+                <strong>computador do caminhão</strong>, clicando em
+                <em>“Rec”</em>.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Câmera de Foto === -->
+          <div class="desc" data-item="photo-camera" hidden>
+            <p>
+              A <strong>câmera de foto</strong> liga automaticamente ao ser
+              segurada fora do caminhão. Nos modelos <strong>Tier II</strong> e
+              <strong>Tier III</strong>, um visor adicional mostra uma
+              <em>prévia</em> do que será capturado, ajudando o jogador a
+              enquadrar o alvo antes de tirar a foto.
+            </p>
+
+            <p>
+              Cada câmera pode tirar <strong>fotos ilimitadas</strong>, porém
+              apenas as <strong>5 primeiras</strong> contam para
+              <em>recompensas</em> e <em>objetivos</em>.
+            </p>
+
+            <p>
+              Ao tirar uma foto, o <strong>flash</strong> dispara e uma prévia
+              aparece no visor (para Tier II e III). Fotos de
+              <strong>superfícies reflexivas</strong> mostram o reflexo do
+              flash, como em televisões ou no machado empunhado por certos
+              fantasmas.
+            </p>
+
+            <p>
+              O <strong>tempo de recarga</strong> entre fotos depende do tier:
+              <br />
+              Tier I: <strong>3 s</strong> · Tier II: <strong>2 s</strong> ·
+              Tier III: <strong>1 s</strong>.
+            </p>
+
+            <p>
+              Durante a recarga, o jogador
+              <strong>não pode trocar de item</strong>, mas pode interagir com
+              itens já colocados ou jogados no chão.
+            </p>
+
+            <h4>Interferência e atração</h4>
+            <p>
+              Quando o fantasma se manifesta em um evento ou caçada, o visor da
+              câmera (e as próprias fotos tiradas nesse momento) ficam
+              <strong>distorcidos</strong>. Mesmo assim, se um
+              <em>alvo válido</em> for capturado, a foto ainda será
+              <strong>registrada no diário</strong>.
+            </p>
+
+            <p>
+              Segurar uma <strong>Tier II ou III</strong> a até
+              <strong>7,5 m</strong> de um fantasma (<strong>2,5 m</strong> no
+              caso de um <em>Yokai</em>) durante uma <strong>caçada</strong> no
+              mesmo andar <strong>atrai o fantasma</strong>. A
+              <strong>Tier I</strong> só atrai ao tirar a foto.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Projetor D.O.T.S === -->
+          <div class="desc" data-item="dots-projector" hidden>
+            <p>
+              O <strong>Projetor D.O.T.S</strong> pode ser colocado na
+              <strong>parede</strong> ou no <strong>chão</strong>, semelhante ao
+              sensor de movimento. Ele emite uma matriz de
+              <strong>pontos verdes</strong> em uma área pequena à frente do
+              projetor.
+            </p>
+
+            <p>
+              No <strong>Tier I</strong>, também pode ser
+              <strong>segurado e alternado</strong> para criar um
+              <em>cone</em> de luz D.O.T.S apontado para onde você mira.
+              (Observação: o Tier I <strong>não funciona</strong> se as
+              <em>Lanternas</em>
+              estiverem desativadas nas configurações de dificuldade
+              personalizada.)
+            </p>
+
+            <h4>Como a evidência aparece</h4>
+            <p>
+              Fantasmas com evidência D.O.T.S entram ocasionalmente no
+              <em>“estado D.O.T.S”</em>. Durante esse estado, uma
+              <strong>silhueta tênue</strong> do fantasma fica visível
+              <em>apenas</em> quando ele passa pela grade de lasers. O fantasma
+              anda em direção ao <strong>jogador mais próximo</strong> no mesmo
+              cômodo ou para um ponto aleatório se ninguém estiver por perto.
+            </p>
+
+            <p>
+              A silhueta é visível a olho nu (exceto no caso do
+              <strong>Goryo</strong>), mas uma
+              <strong>câmera de vídeo com visão noturna</strong> pode dar melhor
+              visibilidade. Isso significa que D.O.T.S pode ser observado
+              simultaneamente com <strong>Orbes Fantasma</strong>.
+            </p>
+
+            <p class="muted" style="margin: 0.25rem 0 0">
+              Jogadores <strong>mortos</strong> não conseguem ver o estado
+              D.O.T.S por nenhum meio.
+            </p>
+
+            <h4>Comportamento eletrônico & caçadas</h4>
+            <p>
+              Apesar de ser equipamento <strong>eletrônico</strong>, apenas o
+              <strong>Tier I</strong> (quando
+              <strong>ativado e segurado</strong>) atrai o fantasma para o
+              jogador durante uma <strong>caçada</strong>. Os demais
+              <em>não atraem</em> e são seguros de segurar.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@ChickyTV"
+                target="_blank"
+                rel="noopener"
+              >
+                @ChickyTV
+              </a>
+            </p>
+          </div>
+          <!-- === Escrita Fantasma === -->
+          <div class="desc" data-item="ghost-writing-book" hidden>
+            <p>
+              Uma <strong>prévia translúcida</strong> do livro aberto aparece
+              quando o jogador mira em uma superfície e segura o botão de
+              <em>uso secundário</em>. O livro é colocado assim que o botão é
+              solto.
+            </p>
+
+            <h4>Função</h4>
+            <p>
+              Se <strong>Escrita Fantasma</strong> for um tipo de evidência do
+              fantasma, há chance de ele
+             <strong>interagir com o livro</strong> escrevendo nele. Quando
+              isso ocorre, o livro <strong>levita</strong> levemente e a
+              <strong>caneta começa a rabiscar freneticamente</strong> nas
+              páginas, com som e animação visíveis, até ser arremessada ao chão.
+            </p>
+
+            <p>
+              Essa interação gera uma leitura de <strong>EMF 2</strong>, com
+              chance de <strong>33%</strong> de ser <strong>EMF 5</strong> se
+              esse também for um dos tipos de evidência do fantasma.
+            </p>
+
+            <p class="muted" style="margin: 0.25rem 0 0">
+              O fantasma <strong>não escreverá</strong> no livro se ele estiver
+              <strong>fechado</strong> ou <strong>fora de alcance</strong>.
+            </p>
+
+            <h4>Quando o fantasma joga o livro</h4>
+            <p>
+              Um fantasma pode <strong>arremessar o livro</strong> apenas se
+              <em>Escrita Fantasma</em> <strong>não for</strong> uma de suas
+              evidências ou se essa evidência estiver <em>oculta</em>. Após ser
+              jogado, o livro <strong>se fecha automaticamente</strong>.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Crucifixo === -->
+          <div class="desc" data-item="crucifix" hidden>
+            <p>
+              O <strong>Crucifixo</strong> pode ser <strong>segurado</strong> na
+              mão do jogador, <strong>jogado</strong> no chão ou
+              <strong>posicionado</strong>; ele funciona em todas essas
+              situações.
+            </p>
+
+            <p>
+              Ao segurar o botão de posicionamento, é exibida uma
+              <strong>esfera translúcida</strong> representando o
+              <em>alcance efetivo</em> do crucifixo — o raio depende do nível do
+              item:
+            </p>
+
+            <ul class="tips">
+              <li>Tier I: <strong>3&nbsp;m</strong></li>
+              <li>Tier II: <strong>4&nbsp;m</strong></li>
+              <li>Tier III: <strong>5&nbsp;m</strong></li>
+            </ul>
+
+            <p>
+              Quando o fantasma tenta iniciar uma caçada dentro desse alcance, a
+              caçada
+              <strong>não começa</strong> e uma
+              <strong>carga é consumida</strong>. O fantasma é
+              <strong>teletransportado de volta</strong> ao seu cômodo favorito.
+              Cada vez que o crucifixo impede uma caçada, é gerada uma leitura
+              <strong>EMF 2</strong>, com <strong>33% de chance</strong> de ser
+              <strong>EMF 5</strong> se for um dos tipos de evidência do
+              fantasma.
+            </p>
+
+            <h4>Alcance especial — Demônio</h4>
+            <p>
+              Para o fantasma <strong>Demônio</strong>, o alcance do crucifixo
+              aumenta em <strong>50%</strong> para cada nível:
+            </p>
+
+            <ul class="tips">
+              <li>Tier I: <strong>4,5&nbsp;m</strong></li>
+              <li>Tier II: <strong>6&nbsp;m</strong></li>
+              <li>Tier III: <strong>7,5&nbsp;m</strong></li>
+            </ul>
+
+            <h4>Cargas e funcionamento</h4>
+            <p>
+              O <strong>Tier I</strong> possui apenas <strong>1 carga</strong>,
+              enquanto os <strong>Tiers II e III</strong> têm
+              <strong>2 cargas</strong>.
+              <br />
+              Cada vez que o crucifixo impede uma caçada:
+            </p>
+
+            <ul class="tips">
+              <li>
+                Surge um <strong>efeito de queima</strong> e o crucifixo
+                <strong>brilha</strong>;
+              </li>
+              <li>
+                Na <strong>primeira ativação</strong>, um braço desaparece;
+              </li>
+              <li>
+                Na <strong>segunda</strong>, mais partes somem até restar apenas
+                o metal queimado.
+              </li>
+            </ul>
+
+            <p>
+              Se o jogador estiver <strong>segurando</strong> o crucifixo e ele
+              impedir uma caçada, o item é
+              <strong>automaticamente jogado no chão</strong>.
+            </p>
+
+            <p>
+              Após estar completamente queimado, o crucifixo se torna
+              <strong>inútil</strong> e não terá mais efeito algum.
+            </p>
+
+            <h4>Limitações</h4>
+            <p>O crucifixo <strong>não funcionará</strong> se:</p>
+            <ul class="tips">
+              <li>
+                O fantasma estiver fora do alcance, mesmo no cômodo favorito;
+              </li>
+              <li>
+                Uma <strong>caçada amaldiçoada</strong> for iniciada (exceto o
+                Tier&nbsp;III não utilizado, que pode bloquear uma única caçada
+                amaldiçoada gastando ambas as cargas);
+              </li>
+              <li>Uma caçada <strong>já estiver em andamento</strong>.</li>
+            </ul>
+
+            <p>
+              Após o uso, o fantasma precisa esperar pelo menos
+              <strong>25&nbsp;s</strong> — ou <strong>20&nbsp;s</strong> no caso
+              de um Demônio — antes de tentar iniciar outra caçada.
+            </p>
+
+            <h4>Outros detalhes</h4>
+            <p>
+              O alcance do crucifixo
+              <strong>não é bloqueado por paredes ou portas</strong>, inclusive
+              por paredes externas. Assim, é possível que um crucifixo colocado
+              <strong>fora da casa</strong> ainda impeça uma caçada se o
+              fantasma estiver dentro do alcance — como pode acontecer em
+              <em>42&nbsp;Edgefield&nbsp;Road</em>, onde um fantasma próximo à
+              frente da casa pode consumir um crucifixo que ainda está pendurado
+              na parede do caminhão.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Incenso === -->
+          <div class="desc" data-item="smudge-stick" hidden>
+            <p>
+              Para <strong>acender</strong> o incenso: tenha um
+              <strong>acendedor</strong> no inventário, segure o incenso e
+              acenda.
+            </p>
+
+            <h4>Duração (por Tier)</h4>
+            <ul class="tips">
+              <li>Tier I: <strong>5 s</strong></li>
+              <li>Tier II: <strong>6 s</strong></li>
+              <li>Tier III: <strong>7 s</strong></li>
+            </ul>
+
+            <h4>Alcance do efeito</h4>
+            <p>
+              O fantasma precisa estar dentro do <strong>raio</strong> do
+              incenso no momento do efeito:
+            </p>
+            <ul class="tips">
+              <li>Tier I: <strong>3 m</strong></li>
+              <li>Tier II: <strong>4 m</strong></li>
+              <li>Tier III: <strong>5 m</strong></li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Isqueiro === -->
+          <div class="desc" data-item="igniter" hidden>
+            <p>
+              Um <strong>isqueiro</strong> pode ser usado tanto
+              <strong>na mão</strong> quanto <strong>no inventário</strong>.
+              Segurando-o, pressione a tecla ou mouse para acendê-lo.
+              Incenso, velas do <em>círculo de invocação</em> e
+              <em>velas comuns</em> podem ser acesos mirando neles enquanto segura
+              um isqueiro/fósforo.
+            </p>
+
+            <p class="muted" style="margin: 0.25rem 0 0">
+              O isqueiro ocupa um <strong>slot especial</strong> do inventário,
+              permitindo carregar <strong>outros três itens</strong> além dele.
+            </p>
+
+            <h4>Tempo de uso por Tier</h4>
+            <ul class="tips">
+              <li>
+                <strong>Tier I</strong>: 10 fósforos/caixa,
+                <strong>10 s</strong> por fósforo (total
+                <strong>100 s</strong> = 1 min 40 s)
+              </li>
+              <li><strong>Tier II</strong>: <strong>5 min</strong></li>
+              <li><strong>Tier III</strong>: <strong>10 min</strong></li>
+            </ul>
+            <p>
+              Acender um incenso/firelight segurado enquanto o isqueiro está na
+              mão secundária
+              <strong>consome instantaneamente</strong>: 1 fósforo no Tier I, ou
+              <strong>15 s</strong> do “combustível” total nos Tiers II e III.
+            </p>
+              <li>
+                Fantasmas podem <strong>apagar chamas</strong> de isqueiros a
+                até <strong>5 m</strong>.
+              </li>
+            </ul>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@Madixx"
+                target="_blank"
+                rel="noopener"
+              >
+                @Madixx
+              </a>
+            </p>
+          </div>
+          <!-- === Vela  === -->
+          <div class="desc" data-item="firelight" hidden>
+            <p>
+              Jogadores podem acender uma
+              <strong>vela </strong> segurada na mão pressionando
+              <em>Uso Primário</em>, desde que tenham um
+              <strong>isqueiro/fósforo</strong> no inventário. Uma vela colocada em uma
+              superfície pode ser acesa segurando o isqueiro e pressionando
+              <em>Uso Secundário</em>. Também é possível segurar uma vela acesa,
+              mirar em uma vela apagada e usar <em>Uso Secundário</em> para
+              transferir a chama.
+            </p>
+
+
+            <h4>Posicionamento</h4>
+            <p>
+              Velas podem ser <strong>colocadas sobre superfícies</strong>. Ao
+              segurar o botão de posicionamento, aparece um
+              <strong>contorno translúcido</strong> indicando o local onde será
+              posicionada. A vela ficará <strong>vertical</strong> em relação à
+              superfície, mas pode tombar se for colocada em terrenos inclinados
+              ou verticais.
+            </p>
+
+            <h4>Função</h4>
+            <p>
+              Diferente de outras fontes de fogo, os
+              <strong>fantasmas não podem acender</strong> uma vela, mas podem
+              <strong>apagá-la</strong> quando estiverem a até
+              <strong>5 metros</strong> de distância. O apagamento é acompanhado
+              de um efeito sonoro de “suspiro”. A vela também se apaga sozinha
+              após o tempo de duração, que varia conforme o nível:
+            </p>
+
+            <p>
+              Fantasmas podem apagar velas <strong>a qualquer momento</strong>,
+              inclusive durante caçadas. Há um
+              <strong>intervalo de 20 segundos</strong> antes que possam apagar
+              a mesma vela novamente — embora possam apagar várias diferentes ao
+              mesmo tempo. O <em>Onryo</em> ignora esse intervalo devido à sua
+              mecânica de prevenção de caçadas.
+            </p>
+
+            <h4>Extinção e duração</h4>
+            <p>
+              Jogar uma vela acesa (ou deixá-la cair com força), guardá-la no
+              inventário, deixá-la na <strong>chuva forte</strong> (Tiers I e
+              II) ou pressionar <em>Uso Primário</em> enquanto a segura também a
+              apaga.
+            </p>
+
+            <h4>Efeito na sanidade</h4>
+            <p>
+              Estar a até <strong>2 metros</strong> de uma vela acesa
+              <strong>reduz a drenagem passiva de sanidade</strong> causada pela
+              escuridão, com intensidade proporcional ao nível da vela. No
+              entanto, ela <strong>não</strong> afeta a perda de sanidade
+              causada por <em>eventos fantasmagóricos</em> ou pela
+              <em>morte de outros jogadores</em>.
+            </p>
+
+            <p class="muted">
+              Apesar de o <strong>Tier II</strong> conter várias velas, ele
+              conta como <strong>apenas uma chama</strong> para todos os efeitos
+              do jogo.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Sal === -->
+          <div class="desc" data-item="salt" hidden>
+            <p>
+              O <strong>recipiente de sal</strong> é usado para
+              <strong>colocar montes de sal</strong> no chão. Cada recipiente
+              pode ser usado de <strong>2 a 3 vezes</strong>, permitindo um
+              total de <strong>6 a 9 montes</strong> por partida com três
+              recipientes. Os montes podem ser empilhados no mesmo ponto.
+            </p>
+
+            <h4>Função</h4>
+            <p>
+              Quando o fantasma <strong>passa sobre um monte de sal</strong>,
+              ele deixa uma <strong>marca de pegada</strong> visível na pilha.
+              Isso pode ocorrer a qualquer momento, mesmo se o fantasma estiver
+              invisível.
+            </p>
+
+            <p>
+              Nos segundos seguintes, ao se mover, o fantasma gera
+              <strong>passos audíveis</strong> (semelhantes aos de uma caçada)
+              e, caso tenha <strong>evidência UV</strong>, também deixa
+              <strong>pegadas visíveis</strong>
+              sob luz ultravioleta.
+              <strong>Wraiths</strong> nunca deixam marcas — eles andam sobre o
+              sal como se ele não existisse.
+            </p>
+
+            <p class="muted">
+              Jogadores não deixam pegadas nem causam impressões no sal.
+            </p>
+
+            <h4>Tier I</h4>
+            <p>
+              O <strong>salgueiro Tier I</strong> possui
+              <strong>duas utilizações</strong> e cria um pequeno monte circular
+              de <strong>sal branco</strong> no chão. Uma marca em forma de
+              <em>sola de sapato</em> aparece quando o fantasma passa por ele.
+            </p>
+
+            <h4>Tier II</h4>
+            <p>
+              O <strong>frasco de sal Tier II</strong> tem
+              <strong>três utilizações</strong> e coloca uma
+              <strong>trilha longa de sal rosa</strong>, facilitando o contato
+              do fantasma. O centro da pilha desaparece quando o fantasma pisa
+              sobre ela.
+            </p>
+
+            <h4>Tier III</h4>
+            <p>
+              O <strong>frasco de sal Tier III</strong> também possui
+              <strong>três utilizações</strong> e deposita uma
+              <strong>trilha longa de sal preto</strong>, idêntica em tamanho à
+              do Tier II. Se o fantasma pisar sobre o sal preto durante uma
+              caçada, sua <strong>velocidade será reduzida em 50%</strong> por
+              <strong>2 segundos</strong>. Se pisar em outro monte antes de o
+              tempo acabar, o cronômetro é reiniciado, mas o efeito de lentidão
+              não se acumula.
+            </p>
+
+            <p>
+              Fora de uma caçada, quando pisa no sal, o fantasma
+              <strong>vira brevemente na direção oposta</strong> e se afasta do
+              local. Esse efeito não se aplica durante eventos de fantasma.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Tripé === -->
+          <div class="desc" data-item="tripod" hidden>
+            <p>
+              Ao <strong>pegar uma câmera de vídeo</strong> e posicioná-la sobre
+              o tripé, ela será <strong>montada automaticamente</strong> nele.
+              Carregar o tripé depois disso também leva a câmera junto,
+              dispensando a necessidade de segurar ambos separadamente.
+            </p>
+
+            <p>
+              A câmera pode ser <strong>removida</strong> do tripé a qualquer
+              momento apenas <strong>pegando-a novamente</strong>.
+            </p>
+
+            <h4>Posicionamento</h4>
+            <p>
+              O tripé pode ser <strong>colocado</strong> no chão soltando-o,
+              fazendo com que ele caia diretamente à frente do jogador. Também é
+              possível posicioná-lo usando <em>Uso Secundário</em> — ao segurar
+              essa tecla, um <strong>contorno translúcido</strong> mostra onde o
+              tripé será colocado, permitindo ajustar o ângulo movendo o mouse
+              para os lados.
+            </p>
+
+            <p>
+              Por ser um item <strong>grande e pesado</strong>, o tripé ocupa a
+              mão do jogador enquanto é carregado e
+              <strong>não pode ser guardado no inventário</strong>. Trocar de
+              item ou de mão enquanto carrega o tripé faz com que ele
+              <strong>seja automaticamente solto</strong>.
+            </p>
+
+            <p>
+              Além disso, os tripés
+              <strong>bloqueiam parcialmente a movimentação</strong> — o jogador
+              precisa escolher com cuidado onde posicioná-los para não
+              atrapalhar a passagem.
+            </p>
+
+            <h4>Função</h4>
+            <p>
+              O tripé permite <strong>posicionar câmeras de vídeo</strong> em
+              locais onde não há superfícies adequadas, além de reduzir as
+              chances de o fantasma <strong>derrubar a câmera</strong>. A
+              <strong>estabilidade</strong> contra interferências do fantasma
+              <strong>depende do nível</strong> do tripé.
+            </p>
+
+            <h4>Tiers II e III</h4>
+            <p>
+              Os tripés dos níveis <strong>II e III</strong> possuem um
+              <strong>suporte motorizado</strong>, permitindo
+              <strong>girar a câmera</strong> para a esquerda ou direita usando
+              as <strong>setas no canto inferior direito</strong>
+              do monitor dentro do caminhão.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@Patis1a"
+                target="_blank"
+                rel="noopener"
+              >
+                @Patis1a
+              </a>
+            </p>
+          </div>
+          <!-- === Sensor de Movimento === -->
+          <div class="desc" data-item="motion-sensor" hidden>
+            <p>
+              O <strong>sensor de movimento</strong> é usado
+              <strong>colocando-o</strong> em uma parede ou no chão. Depois de
+              instalado, pode ser <strong>desativado interagindo</strong> com
+              ele diretamente.
+            </p>
+
+            <h4>Tier I</h4>
+            <p>
+              Pode ser <strong>colocado na parede ou no chão</strong>. Quando
+              instalado, emite um
+              <strong>feixe de laser vermelho</strong> indicando sua distância
+              de detecção. Se colocado na parede, o sensor aparece no
+              <strong>mapa do caminhão</strong> como uma barra vermelha.
+            </p>
+
+            <p>
+              Quando um <strong>jogador</strong> (vivo ou morto), o
+              <strong>fantasma</strong>, uma <strong>forma de névoa</strong> ou
+              um <strong>objeto</strong> cruza o feixe, o sensor acende uma luz
+              forte por <strong>2 segundos</strong>. A barra no mapa muda para
+              <strong>verde por 6 segundos</strong> e o monitor do caminhão
+              emite um <strong>bipe audível</strong>. Sensores fora da exibição
+              ainda produzem o som normalmente.
+            </p>
+
+            <h4>Tier II</h4>
+            <p>
+              Semelhante ao Tier I, mas adiciona o <strong>modo cônico</strong>,
+              alternável ao interagir com o sensor. Esse modo ativa um
+              <strong>segundo feixe de laser</strong>, permitindo rastrear o
+              movimento do fantasma com mais precisão — as luzes se movem da
+              esquerda para a direita (ou vice-versa) conforme a direção do
+              deslocamento. Além disso, o Tier II emite um
+              <strong>bipe diretamente do próprio sensor</strong>
+              ao detectar movimento.
+            </p>
+
+            <h4>Tier III</h4>
+            <p>
+              O <strong>sensor Tier III</strong> só pode ser colocado no
+              <strong>chão</strong> e tem um
+              <strong>raio esférico de 1,5 metro</strong>, exibido como um
+              <strong>círculo vermelho</strong> no mapa do caminhão.
+            </p>
+
+            <p>
+              Quando o fantasma entra nessa área, o sensor
+              <strong>gira rapidamente</strong> em direção ao ponto detectado e
+              emite uma <strong>luz e um bipe</strong>. No mapa, o círculo
+              vermelho fica <strong>verde por 6 segundos</strong>. Quando o
+              fantasma sai do alcance, o sensor apenas <strong>gira</strong> e
+              acende a luz, <strong>sem emitir som</strong>.
+            </p>
+
+            <p class="muted">
+              Somente o <strong>fantasma</strong> pode acionar o sensor Tier
+              III.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Sensor de Som=== -->
+          <div class="desc" data-item="sound-sensor" hidden>
+            <p>
+              O <strong>sensor de som</strong> é um equipamento que
+              <strong>detecta ruídos</strong> em uma área ampla ao redor de onde
+              é colocado, ajudando a identificar possíveis atividades do
+              fantasma em conjunto com o <em>monitor de som</em> no caminhão.
+            </p>
+
+            <h4>Uso</h4>
+            <p>
+              Pode ser <strong>colocado no chão</strong> ou em
+              <strong>superfícies planas</strong>. Sua área de detecção aparece
+              no <strong>mapa do caminhão</strong> como um
+              <strong>círculo laranja</strong>. O sensor capta a maioria dos
+              sons — exceto vozes de jogadores no chat local ou global.
+            </p>
+
+            <p>
+              Quando um som é detectado, o monitor exibe uma
+              <strong>barra de intensidade</strong> indicando o volume e qual
+              sensor registrou o ruído. A tela mostra o
+              <strong>volume total</strong> de todos os sensores ativos,
+              atualizando a leitura a cada segundo.
+            </p>
+
+            <h4>Propriedades</h4>
+            <ul class="tips">
+              <li>
+                Alcance padrão: <strong>5 metros</strong> no mesmo andar (ignora
+                paredes);
+              </li>
+              <li>
+                O alcance pode ser ampliado clicando no
+                <strong>ícone de aumento</strong> no monitor do caminhão;
+              </li>
+              <li>
+                Pode ser <strong>silenciado</strong> clicando no ícone de
+                alto-falante no monitor.
+              </li>
+            </ul>
+
+            <h4>Tier I</h4>
+            <p>
+              Um <strong>microfone simples</strong> acoplado a um pequeno tripé.
+              Cobre uma área entre <strong>5 e 10 metros</strong> e detecta sons
+              em formato <strong>circular completo</strong>. É
+              <strong>colocável</strong> e conta como equipamento eletrônico.
+            </p>
+
+            <h4>Tier II</h4>
+            <p>
+              Mantém o mesmo funcionamento básico, mas oferece
+              <strong>maior sensibilidade</strong> e um alcance de detecção
+              aprimorado, com atualização de sinal mais rápida no monitor.
+            </p>
+
+            <h4>Tier III</h4>
+            <p>
+              Além das melhorias gerais, possui
+              <strong>dois modos adicionais</strong> que podem ser alternados ao
+              interagir com o sensor no chão ou ao segurá-lo na mão. Esses modos
+              <strong>não podem ser alterados a partir do caminhão</strong>. O
+              Tier III também permite escutar o som captado em tempo real dentro
+              do veículo.
+            </p>
+
+            <p>
+              <strong>Dica:</strong> posicione sensores de som em
+              <strong>salas grandes</strong> ou
+              <strong>corredores longos</strong> para detectar passos, portas e
+              outros ruídos mesmo quando o fantasma não está visível.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Microfone Parabólico === -->
+          <div class="desc" data-item="parabolic-microphone" hidden>
+            <p>
+              O <strong>microfone parabólico</strong> permite ao jogador ouvir
+              <strong>sons paranormais normalmente inaudíveis</strong> de um
+              fantasma em estado ocioso, como
+              <em>vozes, sussurros e rosnados</em> — além de
+              <strong>amplificar outros sons</strong>, como interações com
+              objetos.
+            </p>
+
+            <p>
+              O equipamento deve estar <strong>dentro do prédio</strong> para
+              detectar sons. Quando ativado, o jogador ouvirá com clareza apenas
+              os sons <strong>à frente do microfone</strong>, dentro de um
+              ângulo horizontal de <strong>110°</strong>. Todos os sons fora
+              desse cone são fortemente abafados, permitindo foco direcional na
+              origem dos ruídos.
+            </p>
+
+            <h4>Comportamento dos fantasmas</h4>
+            <ul class="tips">
+              <li>
+                <strong>Mylings</strong> produzem sons paranormais com mais
+                frequência que outros fantasmas.
+              </li>
+              <li>
+                <strong>Banshees</strong> têm chance de emitir um
+                <strong>som único</strong> exclusivo da sua espécie.
+              </li>
+              <li>
+                <strong>Moroi</strong> podem
+                <strong>amaldiçoar o jogador</strong> que ouvir seus sussurros,
+                aumentando a drenagem passiva de sanidade.
+              </li>
+            </ul>
+
+            <h4>Tier I</h4>
+            <p>
+              O <strong>microfone parabólico Tier I</strong> tem alcance de
+              <strong>20 metros à frente</strong>. Possui uma
+              <strong>luz vermelha</strong> que pisca ao detectar som.
+            </p>
+
+            <h4>Tier II</h4>
+            <p>
+              O <strong>Tier II</strong> possui alcance de
+              <strong>30 metros</strong> e uma
+              <strong>tela adicional</strong> que exibe três conjuntos de
+              números:
+            </p>
+
+            <ul class="tips">
+              <li>
+                O número maior (000.0) mostra o
+                <strong>total de decibéis (dB)</strong> de todos os sons
+                detectados;
+              </li>
+              <li>
+                <strong>Min</strong> e <strong>Peak</strong> exibem,
+                respectivamente, o som mais fraco e o mais forte captado;
+              </li>
+              <li>
+                Exemplo: se forem detectados sons de 16 dB, 17 dB e 19 dB, a
+                tela mostrará
+                <strong>Min: 16</strong>, <strong>Peak: 19</strong> e
+                <strong>Total: 52 dB</strong>.
+              </li>
+            </ul>
+
+            <p>
+              Durante uma <strong>caçada</strong>, a tela pisca rapidamente com
+              valores aleatórios.
+            </p>
+
+            <h4>Tier III</h4>
+            <p>
+              Similar ao Tier II, mas inclui uma
+              <strong>função de sonar</strong>, que exibe na tela a
+              <strong>posição e volume de cada som individual</strong>. Além
+              disso, é capaz de detectar sons
+              <strong>um andar acima ou abaixo</strong> do jogador.
+            </p>
+
+            <p class="muted">
+              Os microfones <strong>Tier I e II</strong> detectam sons apenas no
+              mesmo andar em que o jogador se encontra.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Pílulas de Sanidade=== -->
+          <div class="desc" data-item="sanity-pills" hidden>
+            <p>
+              As <strong>pílulas de sanidade</strong> restauram parte da
+              <strong>sanidade mental</strong> do jogador, até o máximo de
+              <strong>100%</strong>, de acordo com a dificuldade da partida:
+            </p>
+
+            <ul class="tips">
+              <li><strong>Amador:</strong> +40%</li>
+              <li><strong>Intermediário:</strong> +35%</li>
+              <li><strong>Profissional:</strong> +30%</li>
+              <li><strong>Pesadelo:</strong> +25%</li>
+              <li><strong>Insanidade:</strong> +20%</li>
+              <li><strong>Personalizado:</strong> 0% – 100% (configurável)</li>
+            </ul>
+
+            <p>
+              Após serem consumidas, as pílulas
+              <strong>caem da mão do jogador</strong> e não podem mais ser
+              reutilizadas. Também não podem ser ingeridas se a sanidade do
+              jogador estiver <strong>acima de 95%</strong>.
+            </p>
+
+            <h4>Velocidade de restauração</h4>
+            <p>
+              A <strong>quantidade de sanidade restaurada</strong> é a mesma em
+              todos os Tiers; o que muda é o
+              <strong>tempo necessário</strong> para o efeito ser concluído.
+              Recomenda-se ficar <strong>fora da casa</strong> ou no
+              <strong>caminhão</strong>
+              durante a restauração para acompanhar a sanidade com precisão.
+            </p>
+
+            <ul class="tips">
+              <li><strong>Tier I:</strong> 20 segundos</li>
+              <li><strong>Tier II:</strong> 10 segundos</li>
+              <li><strong>Tier III:</strong> 10 segundos</li>
+            </ul>
+
+            <h4>Efeito especial — Tier III</h4>
+            <p>
+              Além de restaurar sanidade, as
+              <strong>pílulas Tier III</strong> concedem um
+              <strong>impulso de corrida</strong> por
+              <strong>10 segundos</strong>, permitindo correr sem exaustão
+              durante esse tempo. Durante o efeito, o jogador ouvirá um som de
+              <em>batimentos cardíacos</em>.
+            </p>
+
+            <p>
+              Após o término do impulso, a <strong>estamina</strong> volta a ser
+              consumida normalmente até o esgotamento. Consumir outra pílula
+              Tier III durante o efeito ativo <strong>não prolonga</strong> o
+              tempo de corrida.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Equipamento de Cabeça === -->
+          <div class="desc" data-item="head-gear" hidden>
+            <p>
+              O <strong>equipamento de cabeça</strong> é usado diretamente na
+              cabeça do jogador ao ser recolhido. Pode ser
+              <strong>ativado ou desativado</strong> segurando a tecla de
+              <em>ação especial</em> por alguns segundos e pode ser removido a
+              qualquer momento.
+            </p>
+
+            <p>
+              Quando equipado, <strong>não ocupa espaço no inventário</strong>.
+              A câmera ou luz acompanha a
+              <strong>direção que o jogador estiver olhando</strong>.
+              Equipamentos de cabeça
+              <strong>ligados atraem o fantasma</strong> durante caçadas, como
+              outros dispositivos eletrônicos.
+            </p>
+
+            <h4>Tier I — Câmera de Cabeça</h4>
+            <p>
+              Funciona como uma <strong>câmera de vídeo portátil</strong>,
+              permitindo à equipe acompanhar o jogador e visualizar
+              <strong>Orbes Fantasmas</strong>. É especialmente útil em partidas
+              com observadores no caminhão, pois o
+              <strong>computador</strong> pode alternar entre o modo normal e o
+              <strong>modo de visão noturna</strong>.
+            </p>
+
+            <p>
+              Ideal para monitorar jogadores que precisam ficar sozinhos (como
+              ao usar a
+              <em>Spirit Box</em>) ou para orientar colegas em mapas grandes e
+              escuros.
+            </p>
+
+            <p>
+              Ao equipar a Câmera de Cabeça, o jogador verá um pequeno
+              <strong>caixote acima do campo de visão</strong>; quando ativa, um
+              <strong>indicador vermelho pisca</strong>.
+            </p>
+
+            <h4>Tier II — Lanterna de Cabeça</h4>
+            <p>
+              Atua como uma <strong>fonte de luz</strong> presa à cabeça, com
+              intensidade comparável à <strong>lanterna Tier I</strong>. A
+              lanterna não aparece na visão do jogador, exceto durante corridas,
+              onde pode ser parcialmente visível.
+            </p>
+
+            <h4>Tier III — Óculos de Visão Noturna</h4>
+            <p>
+              Melhora significativamente a
+              <strong>visibilidade no escuro</strong>, aplicando um filtro
+              esverdeado à visão do jogador. No entanto, adiciona um leve
+              <strong>efeito de granulação</strong>, reduz o campo de visão e a
+              nitidez da imagem.
+            </p>
+
+            <p>
+              Os óculos não possuem visão “independente” como as câmeras normais
+              — o efeito é apenas um <strong>filtro visual</strong> sobre a
+              visão real. Assim,
+              <strong>Orbes Fantasmas não são visíveis</strong> pelos óculos, e
+              uma <strong>Luz UV</strong> continuará projetando luz roxa em vez
+              de branca.
+            </p>
+
+            <p>
+              Eles também <strong>filtram luzes vermelhas</strong>, tornando
+              invisíveis certos indicadores como o <em>EMF 5</em> ou o LED
+              vermelho da <em>Spirit Box</em>.
+            </p>
+
+            <p>
+              Ao equipar o Tier III, o jogador verá um
+              <strong>formato de óculos</strong>
+              acima da visão, representando o dispositivo.
+            </p>
+
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+          <!-- === Gravador de Som === -->
+          <div class="desc" data-item="sound-recorder" hidden>
+            <p>
+              O <strong>Gravador de Som</strong> pode ser
+              <strong>ativado</strong> para começar a escanear a área em busca
+              de <strong>ruídos produzidos pelo fantasma</strong>. Quando um som
+              válido é detectado, o <strong>medidor de áudio</strong> começará a
+              subir, indicando a <strong>proximidade da fonte</strong> sonora.
+            </p>
+
+            <p>
+              Para gravar o som, o jogador deve
+              <strong>segurar o botão de uso</strong> até que o equipamento
+              capture o áudio com intensidade suficiente. A confirmação ocorre
+              quando:
+            </p>
+
+            <ul class="tips">
+              <li>
+                <strong>Tier I:</strong> as luzes do medidor ficam
+                <strong>verdes</strong>;
+              </li>
+              <li>
+                <strong>Tier II:</strong> o gráfico ultrapassa a linha limite;
+              </li>
+              <li>
+                <strong>Tier III:</strong> o
+                <strong>círculo central do radar</strong> se torna sólido.
+              </li>
+            </ul>
+
+            <p>
+              A gravação é encerrada automaticamente quando o áudio é capturado
+              com sucesso. É possível armazenar até
+              <strong>3 gravações de som</strong> por contrato no diário.
+            </p>
+            <p>
+              <strong>Fonte:</strong>
+              <a
+                href="https://www.youtube.com/@itslazeepanda"
+                target="_blank"
+                rel="noopener"
+              >
+                @itslazeepanda
+              </a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <script src="js/main.js" defer></script>
+    <script type="module" src="js/items.js"></script>
+  </body>
+</html>

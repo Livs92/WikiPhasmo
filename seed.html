@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seed Firestore — WikiPhasmo</title>
+    <style>
+      :root {
+        --bg: #0e0f13;
+        --card: #16181d;
+        --fg: #f5f6fa;
+        --muted: #a0a6ad;
+        --accent: #4e8cff;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font: 14px/1.5 system-ui, Segoe UI, Roboto, Inter, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wrap {
+        max-width: 920px;
+        width: 100%;
+        padding: 24px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid #20232a;
+        border-radius: 14px;
+        padding: 18px 18px 10px;
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 10px 0 2px;
+      }
+      button {
+        background: var(--accent);
+        color: #0b0c10;
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      pre {
+        background: #0b0c10;
+        border: 1px solid #272b33;
+        border-radius: 10px;
+        padding: 12px;
+        max-height: 340px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .ok {
+        color: #7dfdb8;
+      }
+      .warn {
+        color: #ffd76a;
+      }
+      .err {
+        color: #ff7b7b;
+      }
+      label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .checks {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 8px 0 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>🌩️ Seed do Firestore — <strong>PhasmoWiki</strong></h1>
+        <p class="muted">
+          Este utilitário apaga e repovoa as coleções
+          <code>ghosts</code>, <code>items</code>, <code>cursed</code> e
+          <code>maps</code> usando os dados do arquivo <code>js/data.js</code>.
+        </p>
+
+        <div class="checks">
+          <label><input type="checkbox" id="ck-ghosts" checked /> ghosts</label>
+          <label><input type="checkbox" id="ck-items" checked /> items</label>
+          <label><input type="checkbox" id="ck-cursed" checked /> cursed</label>
+          <label><input type="checkbox" id="ck-maps" checked /> maps</label>
+        </div>
+
+        <div class="row">
+          <button id="btn-run">🚀 Rodar seed</button>
+          <button id="btn-check">🔎 Conferir dados</button>
+          <button id="btn-clear">🧹 Somente limpar coleções</button>
+        </div>
+
+        <pre id="log" aria-live="polite"></pre>
+        <p class="muted" style="margin-top: 6px">
+          Dica: rode este arquivo uma única vez para popular o banco. Depois,
+          volte as regras do Firestore para produção.
+        </p>
+      </div>
+    </div>
+
+    <!-- Carrega o data.js no modo "script clássico" para expor as listas globalmente -->
+    <script src="js/data.js"></script>
+
+    <!-- Script principal (módulo) -->
+    <script type="module">
+      // Firebase (12.4.0) + Firestore
+      import { db } from "./js/firebase-init.js";
+      import {
+        collection,
+        doc,
+        writeBatch,
+        getDocs,
+        deleteDoc,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+      const $ = (sel) => document.querySelector(sel);
+      const logEl = $("#log");
+      const log = (msg, cls = "") => {
+        const t = new Date().toLocaleTimeString();
+        logEl.innerHTML += `[${t}] ${cls ? `<span class="${cls}">` : ``}${msg}${
+          cls ? `</span>` : ``
+        }\n`;
+        logEl.scrollTop = logEl.scrollHeight;
+        console.log(msg);
+      };
+
+      // Lê do escopo global (criado por js/data.js)
+      const pick = (name, altNames = []) => {
+        const all = [name, ...altNames];
+        for (const n of all) {
+          if (globalThis[n]) return globalThis[n];
+        }
+        return undefined;
+      };
+
+      // Tenta obter as listas
+      function getAllData() {
+        const ghosts = pick("GHOSTS", ["Ghosts", "ghosts"]);
+        const items = pick("ITEMS", ["Items", "items"]);
+        const cursed = pick("CURSED", ["Cursed", "cursed", "CURSED_OBJECTS"]);
+        const maps = pick("MAPS", ["Maps", "maps"]);
+        return { ghosts, items, cursed, maps };
+      }
+
+      // Limpa uma coleção (delete todos os documentos)
+      async function clearCollection(name) {
+        const snap = await getDocs(collection(db, name));
+        if (snap.empty) {
+          log(`Coleção '${name}' já está vazia.`, "warn");
+          return;
+        }
+        // Em lotes para não estourar limites
+        const docs = snap.docs;
+        let batch = writeBatch(db);
+        let count = 0,
+          commits = 0;
+
+        for (const d of docs) {
+          batch.delete(d.ref);
+          count++;
+          if (count % 400 === 0) {
+            await batch.commit();
+            commits++;
+            batch = writeBatch(db);
+          }
+        }
+        await batch.commit();
+        commits++;
+        log(
+          `🧹 '${name}' limpa (${docs.length} docs, ${commits} commits).`,
+          "ok"
+        );
+      }
+
+      // Envia uma coleção (em lotes)
+      async function uploadCollection(name, arr) {
+        if (!Array.isArray(arr) || !arr.length) {
+          log(`Nada para enviar em '${name}'.`, "warn");
+          return;
+        }
+        let batch = writeBatch(db);
+        let count = 0,
+          commits = 0;
+
+        for (const item of arr) {
+          const ref = doc(collection(db, name)); // ID auto
+          batch.set(ref, item);
+          count++;
+          if (count % 400 === 0) {
+            await batch.commit();
+            commits++;
+            batch = writeBatch(db);
+          }
+        }
+        await batch.commit();
+        commits++;
+        log(
+          `✅ '${name}' enviada (${arr.length} docs, ${commits} commits).`,
+          "ok"
+        );
+      }
+
+      // Apenas checa se as listas estão acessíveis
+      function checkData() {
+        const { ghosts, items, cursed, maps } = getAllData();
+        logEl.textContent = ""; // limpa
+        log("Verificando dados do js/data.js ...");
+        log(`ghosts: ${ghosts?.length ?? 0}`);
+        log(`items : ${items?.length ?? 0}`);
+        log(`cursed: ${cursed?.length ?? 0}`);
+        log(`maps  : ${maps?.length ?? 0}`);
+        if (!ghosts || !items || !cursed || !maps) {
+          log(
+            "⚠️ Alguma lista não foi encontrada. Confirme se js/data.js define GHOSTS, ITEMS, CURSED e MAPS no escopo global.",
+            "warn"
+          );
+        } else {
+          log("Tudo certo! Pode rodar o seed. 🚀", "ok");
+        }
+      }
+
+      async function seedSelected(clearOnly = false) {
+        const wantGhosts = $("#ck-ghosts").checked;
+        const wantItems = $("#ck-items").checked;
+        const wantCursed = $("#ck-cursed").checked;
+        const wantMaps = $("#ck-maps").checked;
+
+        const { ghosts, items, cursed, maps } = getAllData();
+
+        logEl.textContent = "";
+        log("Iniciando seed do Firestore ...");
+
+        try {
+          if (wantGhosts) {
+            await clearCollection("ghosts");
+            if (!clearOnly) await uploadCollection("ghosts", ghosts || []);
+          }
+          if (wantItems) {
+            await clearCollection("items");
+            if (!clearOnly) await uploadCollection("items", items || []);
+          }
+          if (wantCursed) {
+            await clearCollection("cursed");
+            if (!clearOnly) await uploadCollection("cursed", cursed || []);
+          }
+          if (wantMaps) {
+            await clearCollection("maps");
+            if (!clearOnly) await uploadCollection("maps", maps || []);
+          }
+          log(
+            clearOnly
+              ? "🧼 Limpeza concluída."
+              : "🌟 Seed concluído com sucesso!"
+          );
+        } catch (err) {
+          console.error(err);
+          log(`❌ Erro: ${err?.message || err}`, "err");
+        }
+      }
+
+      // Botões
+      $("#btn-check").addEventListener("click", checkData);
+      $("#btn-run").addEventListener("click", () => seedSelected(false));
+      $("#btn-clear").addEventListener("click", () => seedSelected(true));
+
+      // Roda uma checagem inicial
+      checkData();
+    </script>
+  </body>
+</html>
