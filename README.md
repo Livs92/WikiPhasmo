@@ -1,6 +1,6 @@
 ## 🧩 Sobre o Projeto
 
-**PhasmoWiki** é um site interativo e responsivo criado para reunir **todas as informações sobre os fantasmas, evidências, mapas, itens e objetos amaldiçoados** do jogo **Phasmophobia**.
+**WikiPhasmo** é um site interativo e responsivo criado para reunir **todas as informações sobre os fantasmas, evidências, mapas, itens e objetos amaldiçoados** do jogo **Phasmophobia**.
 
 O projeto foi desenvolvido como **Projeto Final do curso de Análise e Desenvolvimento de Sistemas (ADS)**, com foco em **organização visual, interatividade e acessibilidade**, tem como foco **organização visual, interatividade e acessibilidade**, tornando o aprendizado sobre o jogo mais fácil e intuitivo.
 
